@@ -3,7 +3,7 @@ if you are a first-time user of Rust, the notes below may help you to install
 some of the dependencies on a Mac or Linux workstation.
 
 ### Rust
-We suggest that you install Rust using the 'rustup' tool. Rustup will install
+You can install Rust using the 'rustup' tool. Rustup will install
 the latest version of Rust, Cargo, and the other binaries used in Solana.
 
 Follow the instructions at [Installing
