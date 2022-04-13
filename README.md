@@ -13,15 +13,12 @@ https://travis-ci.org/solana-labs/example-helloworld.svg?branch=master
 
 # Hello world on Solana
 
-This project demonstrates how to use the [Solana Javascript
-API](https://github.com/solana-labs/solana-web3.js) to
-interact with programs on the Solana blockchain.
+This project demonstrates how to use solana rust APIs to write a counter program and client in rust.
 
 The project comprises of:
 
-* An on-chain hello world program
-* A client that can send a "hello" to an account and get back the number of
-  times "hello" has been sent
+* An on-chain counter program
+* A rust client that can send a "Increament" counter message to the on-chain program and get the current reading.
 
 ## Translations
 - [Traditional Chinese](README_ZH_TW.md)
