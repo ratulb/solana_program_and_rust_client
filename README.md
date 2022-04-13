@@ -11,7 +11,7 @@ Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=git
 https://travis-ci.org/solana-labs/example-helloworld.svg?branch=master
 [travis-url]: https://travis-ci.org/solana-labs/example-helloworld
 
-# Hello world on Solana
+# Rust counter program and client on solana
 
 This project demonstrates how to use solana rust APIs to write a counter program and client in rust.
 
