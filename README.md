@@ -20,12 +20,8 @@ The project comprises of:
 * An on-chain counter program
 * A rust client that can send a "Increament" counter message to the on-chain program and get the current reading.
 
-## Translations
-- [Traditional Chinese](README_ZH_TW.md)
-- [Simplified Chinese](README_ZH_CN.md)
-
 ## Table of Contents
-- [Hello world on Solana](#hello-world-on-solana)
+- [Counter program and client](#counter_program_and_client)
   - [Table of Contents](#table-of-contents)
   - [Quick Start](#quick-start)
     - [Configure CLI](#configure-cli)
@@ -33,7 +29,7 @@ The project comprises of:
     - [Install npm dependencies](#install-npm-dependencies)
     - [Build the on-chain program](#build-the-on-chain-program)
     - [Deploy the on-chain program](#deploy-the-on-chain-program)
-    - [Run the JavaScript client](#run-the-javascript-client)
+    - [Run the rust client](#run-the-rust-client)
     - [Expected output](#expected-output)
       - [Not seeing the expected output?](#not-seeing-the-expected-output)
     - [Customizing the Program](#customizing-the-program)
@@ -62,8 +58,8 @@ on your OS, they may already be installed:
 
 - Install node (v14 recommended)
 - Install npm
-- Install Rust v1.56.1 or later from https://rustup.rs/
-- Install Solana v1.8.14 or later from
+- Install Rust v1.60.0 or later from https://rustup.rs/
+- Install Solana v1.10.5 or later from
   https://docs.solana.com/cli/install-solana-cli-tools
 
 If this is your first time using Rust, these [Installation
