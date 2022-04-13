@@ -17,18 +17,12 @@ Rust](https://www.rust-lang.org/tools/install) for more details.
 After installation, you should have `rustc`, `cargo`, & `rustup`. You should
 also have `~/.cargo/bin` in your PATH environment variable.
 
-### NodeJS/NPM
-Fetch the `npm` dependencies, including `@solana/web3.js`, by running:
-```bash
-$ npm install
-```
-
 ### Git Repository
-Clone the 'example-helloworld' repository into your development machine:
+Clone the 'solana_counter_program' repository into your development machine:
 ```bash
 $ cd /path/to/your/work/folder/
-$ git clone https://github.com/solana-labs/example-helloworld.git
-$ cd example-helloworld
+$ git clone https://github.com/ratulb/solana_counter_program.git
+$ cd solana_counter_program
 ```
 (If you plan to submit changes in a pull request, be sure to create a fork first
 and then clone your fork.)
