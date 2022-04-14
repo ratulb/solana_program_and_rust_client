@@ -27,7 +27,7 @@ The project comprises of:
     - [Configure CLI](#configure-cli)
     - [Start local Solana cluster](#start-local-solana-cluster)
     - [Build the on-chain program](#build-the-on-chain-program)
-    - [Deploy the on-chain program](#deploy-the-on-chain-program)
+    - [Deploy the on-chain program locally](#deploy-the-on-chain-program-locally)
     - [Deploy to devnet](#deploy-to-devnet)
     - [Deploy to testnet](#deploy-to-testnet)
     - [Run the rust client](#run-the-rust-client)
@@ -116,7 +116,7 @@ cd solana_counter_program
 
 cargo build-bpf
 ```
-### Deploy the on-chain program
+### Deploy the on-chain program locally
 
 ```bash
 solana program deploy target/deploy/program.so
