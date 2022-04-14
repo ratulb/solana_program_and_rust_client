@@ -89,7 +89,7 @@ Start a local Solana cluster:
 solana-test-validator
 ```
 If you want start with a clean slate after couple of trials, you can do:
-Start a local Solana cluster:
+
 ```bash
 solana-test-validator --reset
 ```
