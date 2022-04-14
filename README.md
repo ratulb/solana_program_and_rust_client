@@ -28,7 +28,7 @@ The project comprises of:
     - [Start local Solana cluster](#start-local-solana-cluster)
     - [Build the on-chain program](#build-the-on-chain-program)
     - [Deploy the on-chain program](#deploy-the-on-chain-program)
-    - [Deploy the on-chain program to devnet](#deploy-the-on-chain-program-devnet)
+    - [Deploy to devnet](#deploy-to-devnet)
     - [Deploy the on-chain program to testnet](#deploy-the-on-chain-program-testnet)
     - [Run the rust client](#run-the-rust-client)
     - [Expected output](#expected-output)
@@ -155,7 +155,7 @@ any files under `/src/program-rust` or `/src/program-c` you will need to
 
 Now when you rerun `npm run start`, you should see the results of your changes.
 
-### Deploy the on-chain program to devnet
+### Deploy to devnet
 
 ```bash
 solana program deploy target/deploy/program.so
