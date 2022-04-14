@@ -153,15 +153,17 @@ The following image shows the project layout. We are making use of cargo [worksp
 - `client` - this is the rust client program that invokes the program to increament the counter.
 - `common` - this crate contains the enum/structs shared by both program and client.
 
-To customize the client, make changes to the files under `./client/src`.  If you change any files under `/program/src` or `/src/program-c` you will need to
-[rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program](#deploy-the-on-chain-program).
+(#deploy-the-on-chain-program-locally).
 <p align="center">
   <a href="#project_structure">
     <img alt="Project structure" src="solana_counter_program.png" width="700" heighy="300" />
   </a>
 </p>
 
-Now when you rerun `npm run start`, you should see the results of your changes.
+To tweak the client, make changes to the files under `./client/src`.  If you change any files under `/program/src` you will need to
+[rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program]
+
+Now when you rerun `cargo run`, you should see the results of your changes.
 
 ### Deploy to devnet
 
