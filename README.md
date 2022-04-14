@@ -242,6 +242,14 @@ We [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898
 
 We sum up the minimum rent exemption lamports and transaction cost(`fee_for_message`) and do ourselves a lamports [airdrop](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L214-L216). Airdrop request would [not hit the network](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L131) if the payer account has sufficient lamports to provide for the transaction cost and minimum rent exemption amount required for the counter account to afloat(aka rent free!).
 
+At the end, after jumping all these hoops, we [send our account setup transaction across](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L218-L222) to the network and keep our fingers crossed - hoping that our transaction would go through.
+
+We get back a transaction signature! Much awaited sweet fruit.
+We can make use of the signature to find out the transaction status, if we want.
+
+
+
+
 The client ensures there is an account available to pay for transactions,
 and creates one if there is not, by calling
 [`establishPayer`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L102).
