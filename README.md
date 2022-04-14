@@ -104,25 +104,26 @@ solana logs
 
 There is both a Rust and C version of the on-chain program, whichever is built
 last will be the one used when running the example.
+Go inside the 'solana_counter_program' directory if not already done:
 
 ```bash
-npm run build:program-rust
+cd solana_counter_program
+
 ```
 
 ```bash
-npm run build:program-c
+cargo build-bpf
 ```
-
 ### Deploy the on-chain program
 
 ```bash
-solana program deploy dist/program/helloworld.so
+solana program deploy target/deploy/program.so
 ```
 
-### Run the JavaScript client
+### Run the rust client
 
 ```bash
-npm run start
+cargo run
 ```
 
 ### Expected output
@@ -130,14 +131,14 @@ npm run start
 Public key values will differ:
 
 ```bash
-Let's say hello to a Solana account...
-Connection to cluster established: http://localhost:8899 { 'feature-set': 2045430982, 'solana-core': '1.7.8' }
-Using account AiT1QgeYaK86Lf9kudqKthQPCWwpG8vFA1bAAioBoF4X containing 0.00141872 SOL to pay for fees
-Using program Dro9uk45fxMcKWGb1eWALujbTssh6DW8mb4x8x3Eq5h6
-Creating account 8MBmHtJvxpKdYhdw6yPpedp6X6y2U9dCpdYaZJdmwV3A to say hello to
-Saying hello to 8MBmHtJvxpKdYhdw6yPpedp6X6y2U9dCpdYaZJdmwV3A
-8MBmHtJvxpKdYhdw6yPpedp6X6y2U9dCpdYaZJdmwV3A has been greeted 1 times
-Success
+Connecting to cluster...http://localhost:8899
+Connection to cluster established
+Cluster node solana version 1.10.5
+Counter account B6rWFbQ4pmb4pvcZstFCjLXffZSaqqn6c8fdXzpK3WSX already exists. Owner program: HGsPi7r4MEeUSC74vzx9qCqJvuuBb3AcjNc5MrtEjCGu
+Binary address 8cRrhLjJ7sSbSa1kuaShq2Ywu1otyRhkNwTQ3E1Bqr4T
+Fee for message 5000
+Counter value 1
+
 ```
 
 #### Not seeing the expected output?
