@@ -156,12 +156,11 @@ The following image shows the project layout. We are making use of cargo [worksp
 
 <p align="center">
   <a href="#project_structure">
-    <img alt="Project structure" src="solana_counter_program.png" width="700" heighy="300" />
+    <img alt="Project structure" src="solana_counter_program.png" width="700" height="300"/>
   </a>
 </p>
 
-To tweak the client, make changes to the files under `./client/src`.  If you change any files under `/program/src` you will need to
-[rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program](#deploy-the-on-chain-program-locally).
+To tweak the client, make changes to the files under `./client/src`.  If you change any files under `/program/src` you will need to[rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program](#deploy-the-on-chain-program-locally).
 
 Now when you rerun `cargo run`, you should see the results of your changes.
 
