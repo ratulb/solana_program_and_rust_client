@@ -238,7 +238,9 @@ After this - we proceed to construct the system instruction for creating the cou
 
 Next, we [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L198-L201) the latest blockhash from the solana network. This is a measure of how long ago the client has seen the network state and used by the network to accept/reject query and transaction.
 
-We send 
+We [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L206-L209) network again to find out the required fee for the transaction message - this is the amount for executing transaction on the network passsing the message and the blockhash retrieved in the previous step. 
+
+We sum up the minimum rent exemption lamports and transaction cost(`fee_for_message`) and do ourselves a lamports airdrop. Airdrop request would not hit the network if the payer account has sufficient lamports to provide for the transaction cost and minimum rent exemption amount required for the counter account 
 
 The client ensures there is an account available to pay for transactions,
 and creates one if there is not, by calling
