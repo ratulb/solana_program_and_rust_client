@@ -161,7 +161,7 @@ Now when you rerun `npm run start`, you should see the results of your changes.
 solana config set --url d
 solana program deploy target/deploy/program.so
 ```
-
+#### Or
 ### Deploy to testnet
 
 ```bash
