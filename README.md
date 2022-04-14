@@ -71,6 +71,9 @@ Notes](README-installation-notes.md) might be helpful.
 
 ```bash
 solana config set --url localhost
+or 
+solana config set -ul
+
 ```
 
 2. Create CLI Keypair
@@ -151,6 +154,12 @@ any files under `/src/program-rust` or `/src/program-c` you will need to
 [rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program](#deploy-the-on-chain-program).
 
 Now when you rerun `npm run start`, you should see the results of your changes.
+
+### Deploy the on-chain program to devnet
+
+```bash
+solana program deploy target/deploy/program.so
+```
 
 ## Learn about Solana
 
