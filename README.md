@@ -100,15 +100,14 @@ solana-test-validator --reset
 
 > **Note**: You may need to do some [system tuning](https://docs.solana.com/running-validator/validator-start#system-tuning) (and restart your computer) to get the validator to run
 
-Listen to transaction logs:
+On-chain deployed program's logs can be viewed by launcing a separate terminal and firing the following command:
 ```bash
 solana logs
 ```
+> **None**: For logging messages inside the on-chain program, we should use the `msg!` macro[Logging](https://docs.solana.com/developing/on-chain-programs/developing-rust#logging)
 
 ### Build the on-chain program
 
-There is both a Rust and C version of the on-chain program, whichever is built
-last will be the one used when running the example.
 Go inside the 'solana_counter_program' directory if not already done:
 
 ```bash
@@ -149,8 +148,7 @@ Counter value 1
   [built the on-chain program](#build-the-on-chain-program) and [deployed the program to the cluster](#deploy-the-on-chain-program).
 ### Customizing the Program
 
-To customize the example, make changes to the files under `/src`.  If you change
-any files under `/src/program-rust` or `/src/program-c` you will need to
+To customize the client, make changes to the files under `./client/src`.  If you change any files under `/program/src` or `/src/program-c` you will need to
 [rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program](#deploy-the-on-chain-program).
 
 Now when you rerun `npm run start`, you should see the results of your changes.
