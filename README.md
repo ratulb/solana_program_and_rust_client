@@ -29,7 +29,7 @@ The project comprises of:
     - [Build the on-chain program](#build-the-on-chain-program)
     - [Deploy the on-chain program](#deploy-the-on-chain-program)
     - [Deploy to devnet](#deploy-to-devnet)
-    - [Deploy the on-chain program to testnet](#deploy-the-on-chain-program-testnet)
+    - [Deploy to testnet](#deploy-to-testnet)
     - [Run the rust client](#run-the-rust-client)
     - [Expected output](#expected-output)
       - [Not seeing the expected output?](#not-seeing-the-expected-output)
@@ -158,7 +158,22 @@ Now when you rerun `npm run start`, you should see the results of your changes.
 ### Deploy to devnet
 
 ```bash
+solana config set --url d
 solana program deploy target/deploy/program.so
+```
+
+### Deploy to testnet
+
+```bash
+solana config set -ut
+
+solana program deploy target/deploy/program.so
+```
+
+> **Note**: You may not have required sol balance to deploy and run transactions in devnet or testnet. To request sol into your account do an airdrop:
+
+```bash
+solana airdrop 1
 ```
 
 ## Learn about Solana
