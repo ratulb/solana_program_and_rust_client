@@ -226,7 +226,7 @@ Also, programs themselves are stored in accounts - they are marked as executable
 ```bash
 solana rent 1000 [in bytes]
 ```
-On entry to the [account setup process],(https://github.com/ratulb/solana_counter_program/blob/main/client/src/client.rs#L163-L165) we retrieve the payer pubkey(i.e. pubkey from `~/.config/solana/id.json`), then look for the program id(pubkey from ./target/deploy/program-keypair.json). If the program has not been built - account set up would fail fast.
+On entry to the [account setup process](https://github.com/ratulb/solana_counter_program/blob/main/client/src/client.rs#L163-L165), we retrieve the payer pubkey(i.e. pubkey from `~/.config/solana/id.json`), then look for the program id(pubkey from ./target/deploy/program-keypair.json). If the program has not been built - account set up would fail fast.
 
 Next, we construct the counter account pubkey based on payer pubkey, [seed](https://github.com/ratulb/solana_counter_program/blob/9cfef7fb7ae987b5aad77e252ce64a2a994bb488/client/src/client.rs#L23) and the program id(owner of the account) and make a rpc call to the chain to retrieve the account. Successful retrieval of the account results in early exit from this call because required counter account already exists and we have nothing to setup.
 
