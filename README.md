@@ -240,7 +240,7 @@ Next, we [query](https://github.com/ratulb/solana_counter_program/blob/968744232
 
 We [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L206-L209) network again to find out the required fee for the transaction message - this is the amount for executing transaction on the network passsing the message and the blockhash retrieved in the previous step. 
 
-We sum up the minimum rent exemption lamports and transaction cost(`fee_for_message`) and do ourselves a lamports [airdrop](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L214-L216). Airdrop request would [not hit the network](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L131) if the payer account has sufficient lamports to provide for the transaction cost and minimum rent exemption amount required for the counter account to stay afloat(aka rent free!).
+We sum up the minimum rent exemption lamports and transaction cost([fee_for_message](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L206)) and do ourselves a lamports [airdrop](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L214-L216). Airdrop request would [not hit the network](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L131) if the payer account has sufficient lamports to provide for the transaction cost and minimum rent exemption amount required for the counter account to stay afloat(aka rent free!).
 
 At the end, after jumping all these hoops, we [send our account setup transaction across](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L218-L222) to the network and keep our fingers crossed - hoping that our transaction would go through.
 
@@ -251,12 +251,7 @@ But I am way too tired. I leave it at that - ignore the signature!
 Hey look - the transaction has gone through and account got created! Holy crap, looks like solana is a jolly good fellow!
 
 
-
-The client ensures there is an account available to pay for transactions,
-and creates one if there is not, by calling
-[`establishPayer`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L102).
-
-### Check if the helloworld on-chain program has been deployed
+### Check if the counter on-chain program has been deployed
 
 In [`checkProgram`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L144),
 the client loads the keypair of the deployed program from `./dist/program/helloworld-keypair.json` and uses
