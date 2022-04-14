@@ -152,7 +152,7 @@ To customize the client, make changes to the files under `./client/src`.  If you
 [rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program](#deploy-the-on-chain-program).
 <p align="center">
   <a href="#project_structure">
-    <img alt="Project structure" src="solana_counter_program.png" width="600" heighy="300" />
+    <img alt="Project structure" src="solana_counter_program.png" width="700" heighy="300" />
   </a>
 </p>
 
