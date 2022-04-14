@@ -240,7 +240,7 @@ Next, we [query](https://github.com/ratulb/solana_counter_program/blob/968744232
 
 We [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L206-L209) network again to find out the required fee for the transaction message - this is the amount for executing transaction on the network passsing the message and the blockhash retrieved in the previous step. 
 
-We sum up the minimum rent exemption lamports and transaction cost(`fee_for_message`) and do ourselves a lamports [airdrop](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L214-L216). Airdrop request would not hit the network if the payer account has sufficient lamports to provide for the transaction cost and minimum rent exemption amount required for the counter account to afloat(aka rent free!).
+We sum up the minimum rent exemption lamports and transaction cost(`fee_for_message`) and do ourselves a lamports [airdrop](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L214-L216). Airdrop request would [not hit the network](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L131) if the payer account has sufficient lamports to provide for the transaction cost and minimum rent exemption amount required for the counter account to afloat(aka rent free!).
 
 The client ensures there is an account available to pay for transactions,
 and creates one if there is not, by calling
