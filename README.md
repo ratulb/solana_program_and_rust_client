@@ -125,7 +125,7 @@ cargo run
 
 ### Expected output
 
-Public key values will differ:
+Values will differ!
 
 ```bash
 Connecting to cluster...http://localhost:8899
