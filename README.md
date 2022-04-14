@@ -104,7 +104,7 @@ On-chain deployed program's logs can be viewed by launcing a separate terminal a
 ```bash
 solana logs
 ```
-> **None**: For logging messages inside the on-chain program, we should use the `msg!` macro[Logging](https://docs.solana.com/developing/on-chain-programs/developing-rust#logging)
+> **None**: For logging messages inside the on-chain program, we should use the `msg!` [macro](https://docs.solana.com/developing/on-chain-programs/developing-rust#logging)
 
 ### Build the on-chain program
 
