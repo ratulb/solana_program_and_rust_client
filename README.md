@@ -26,7 +26,6 @@ The project comprises of:
   - [Quick Start](#quick-start)
     - [Configure CLI](#configure-cli)
     - [Start local Solana cluster](#start-local-solana-cluster)
-    - [Install npm dependencies](#install-npm-dependencies)
     - [Build the on-chain program](#build-the-on-chain-program)
     - [Deploy the on-chain program](#deploy-the-on-chain-program)
     - [Run the rust client](#run-the-rust-client)
