@@ -110,7 +110,6 @@ Go inside the 'solana_counter_program' directory if not already done:
 cd solana_counter_program
 
 ```
-
 ```bash
 cargo build-bpf
 ```
