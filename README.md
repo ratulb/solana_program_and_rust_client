@@ -181,6 +181,14 @@ solana balance
 solana airdrop 1
 ```
 
+#### Run the client:
+```bash
+cargo run
+```
+#### Output when connected to devnet:
+
+
+
 ## Learn about Solana
 
 More information about how Solana works is available in the [Solana
