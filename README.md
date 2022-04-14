@@ -28,6 +28,8 @@ The project comprises of:
     - [Start local Solana cluster](#start-local-solana-cluster)
     - [Build the on-chain program](#build-the-on-chain-program)
     - [Deploy the on-chain program](#deploy-the-on-chain-program)
+    - [Deploy the on-chain program to devnet](#deploy-the-on-chain-program-devnet)
+    - [Deploy the on-chain program to testnet](#deploy-the-on-chain-program-testnet)
     - [Run the rust client](#run-the-rust-client)
     - [Expected output](#expected-output)
       - [Not seeing the expected output?](#not-seeing-the-expected-output)
