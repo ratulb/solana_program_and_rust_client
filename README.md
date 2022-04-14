@@ -209,17 +209,19 @@ Counter value 1
 
 ## More about the client
 
-The client is a rust cli program with a main function.
+The client is a rust cli [program](https://github.com/ratulb/solana_counter_program/blob/main/client/src/main.rs) with a main function.
 
-### Entrypoint
+### Main function
 
-The [client's
-entrypoint](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/main.ts#L13)
-does five things.
+The [client's main function](https://github.com/ratulb/solana_counter_program/blob/27d5aa6aa4c7ec14fe049837e8beff4bb7548f3e/client/src/main.rs#L5) does following five things:
 
-### Establish a connection to the cluster
 
-The client establishes a connection with the cluster by calling
+### Instantiates the client that wraps up an underlying RpcClient
+
+The [client] (https://github.com/ratulb/solana_counter_program/blob/main/client/src/client.rs)
+creates an instance of [RpcClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html). This sets up a Http client to the solana network that is picked up from `~/.config/solana/cli/config.yaml`.
+
+a connection with the cluster by calling
 [`establishConnection`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L92).
 
 ### Establish an account to pay for transactions
