@@ -151,8 +151,8 @@ Counter value 1
 To customize the client, make changes to the files under `./client/src`.  If you change any files under `/program/src` or `/src/program-c` you will need to
 [rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program](#deploy-the-on-chain-program).
 <p align="center">
-  <a href="https://solana.com">
-    <img alt="Solana" src="solana_counter_program.png" width="600" />
+  <a href="#project_structure">
+    <img alt="Project structure" src="solana_counter_program.png" width="600" heighy="300" />
   </a>
 </p>
 
