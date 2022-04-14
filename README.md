@@ -21,30 +21,30 @@ The project comprises of:
 * A rust client that can send a "Increament" counter message to the on-chain program and get the current reading.
 
 ## Table of Contents
-- [`Counter program and client`](#counter_program_and_client)
-  - [`Table of Contents`](#table-of-contents)
-  - [`Quick Start`](#quick-start)
-    - [`Configure CLI`](#configure-cli)
-    - [`Start local Solana cluster`](#start-local-solana-cluster)
-    - [`Build the on-chain program`](#build-the-on-chain-program)
-    - [`Deploy the on-chain program locally`](#deploy-the-on-chain-program-locally)
-    - [`Deploy to devnet`](#deploy-to-devnet)
-    - [`Deploy to testnet`](#deploy-to-testnet)
-    - [`Run the rust client`](#run-the-rust-client)
-    - [`Expected output`](#expected-output)
+- [Counter program and client](#counter_program_and_client)
+  - [Table of Contents](#table-of-contents)
+  - [Quick Start](#quick-start)
+    - [Configure CLI](#configure-cli)
+    - [Start local Solana cluster](#start-local-solana-cluster)
+    - [Build the on-chain program](#build-the-on-chain-program)
+    - [Deploy the on-chain program locally](#deploy-the-on-chain-program-locally)
+    - [Deploy to devnet](#deploy-to-devnet)
+    - [Deploy to testnet](#deploy-to-testnet)
+    - [Run the rust client](#run-the-rust-client)
+    - [Expected output](#expected-output)
       - [Not seeing the expected output?](#not-seeing-the-expected-output)
-    - [`Project structure`](#project-structure)
+    - [Project structure](#project-structure)
 
   - [More about the client](#more-about-the-client)
-    - [`Entrypoint`](#entrypoint)
-    - [`Establish a connection to the cluster`](#establish-a-connection-to-the-cluster)
-    - [`Load the helloworld on-chain program if not already loaded`](#load-the-helloworld-on-chain-program-if-not-already-loaded)
-    - [`Send a "Hello" transaction to the on-chain program`](#send-a-hello-transaction-to-the-on-chain-program)
-    - [`Query the Solana account used in the Hello transaction`](#query-the-solana-account-used-in-the-hello-transaction)
-  - [`More about the on-chain program`](#more-about-the-on-chain-program)
-    - [`Programming on Solana`](#programming-on-Solana)
-  - [`Pointing to a public Solana cluster`](#pointing-to-a-public-solana-cluster)
-  - [`Expand your skills with advanced examples`](#expand-your-skills-with-advanced-examples)
+    - [Entrypoint](#entrypoint)
+    - [Establish a connection to the cluster](#establish-a-connection-to-the-cluster)
+    - [Load the helloworld on-chain program if not already loaded](#load-the-helloworld-on-chain-program-if-not-already-loaded)
+    - [Send a "Hello" transaction to the on-chain program](#send-a-hello-transaction-to-the-on-chain-program)
+    - [Query the Solana account used in the Hello transaction](#query-the-solana-account-used-in-the-hello-transaction)
+  - [More about the on-chain program](#more-about-the-on-chain-program)
+    - [Programming on Solana](#programming-on-Solana)
+  - [Pointing to a public Solana cluster](#pointing-to-a-public-solana-cluster)
+  - [Expand your skills with advanced examples](#expand-your-skills-with-advanced-examples)
 
 ## Quick Start
 
@@ -150,9 +150,9 @@ Counter value 1
 ### Project structure
 
 The following image shows the project layout. We are making use of cargo [workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html).
-- [`program`](https://github.com/ratulb/solana_counter_program/tree/main/program) - this is the on-chain counter program
-- [`client`](https://github.com/ratulb/solana_counter_program/tree/main/client) - this is the rust client program that invokes the program to increament the counter.
-- [`common`](https://github.com/ratulb/solana_counter_program/tree/main/common) - this crate contains the enum/structs shared by both program and client.
+- [program](https://github.com/ratulb/solana_counter_program/tree/main/program) - this is the on-chain counter program
+- [client](https://github.com/ratulb/solana_counter_program/tree/main/client) - this is the rust client program that invokes the program to increament the counter.
+- [common](https://github.com/ratulb/solana_counter_program/tree/main/common) - this crate contains the enum/structs shared by both program and client.
 
 <p align="left">
   <a href="#project_structure">
