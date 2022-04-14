@@ -154,9 +154,9 @@ The following image shows the project layout. We are making use of cargo [worksp
 - `client` - this is the rust client program that invokes the program to increament the counter.
 - `common` - this crate contains the enum/structs shared by both program and client.
 
-<p align="center">
+<p align="left">
   <a href="#project_structure">
-    <img alt="Project structure" src="solana_counter_program.png" width="700" height="300"/>
+    <img alt="Project structure" src="solana_counter_program.png" width="350" height="100"/>
   </a>
 </p>
 
