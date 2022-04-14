@@ -23,11 +23,11 @@ impl Processor {
             CounterInstruction::Increament => {
                 msg!("Instruction increament");
                 let accounts_iter = &mut accounts.iter();
-                let counter_ai = next_account_info(accounts_iter)?;
-                let mut counter = Counter::try_from_slice(&counter_ai.data.borrow())?;
+                let counter_acc_info = next_account_info(accounts_iter)?;
+                let mut counter = Counter::try_from_slice(&counter_acc_info.data.borrow())?;
                 counter.count += 1;
                 msg!("Updating counter {}", counter.count);
-                counter.serialize(&mut *counter_ai.data.borrow_mut())?;
+                counter.serialize(&mut *counter_acc_info.data.borrow_mut())?;
             }
         }
 
