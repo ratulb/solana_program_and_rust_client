@@ -108,7 +108,6 @@ Go inside the 'solana_counter_program' directory if not already done:
 
 ```bash
 cd solana_counter_program
-
 ```
 ```bash
 cargo build-bpf
@@ -144,18 +143,6 @@ Counter value 1
 
 - Ensure you've [started the local cluster](#start-local-solana-cluster),
   [built the on-chain program](#build-the-on-chain-program) and [deployed the program to the cluster](#deploy-the-on-chain-program).
-- Inspect the program logs by running `solana logs` to see why the program failed.
-  - ```bash
-    Transaction executed in slot 5621:
-    Signature: 4pya5iyvNfAZj9sVWHzByrxdKB84uA5sCxLceBwr9UyuETX2QwnKg56MgBKWSM4breVRzHmpb1EZQXFPPmJnEtsJ
-    Status: Error processing Instruction 0: Program failed to complete
-    Log Messages:
-      Program G5bbS1ipWzqQhekkiCLn6u7Y1jJdnGK85ceSYLx2kKbA invoke [1]
-      Program log: Hello World Rust program entrypoint
-      Program G5bbS1ipWzqQhekkiCLn6u7Y1jJdnGK85ceSYLx2kKbA consumed 200000 of 200000 compute units
-      Program failed to complete: exceeded maximum number of instructions allowed (200000) at instruction #334
-      Program G5bbS1ipWzqQhekkiCLn6u7Y1jJdnGK85ceSYLx2kKbA failed: Program failed to complete
-
 ### Customizing the Program
 
 To customize the example, make changes to the files under `/src`.  If you change
