@@ -224,6 +224,7 @@ creates an instance of [RpcClient](https://docs.rs/solana-client/latest/solana_c
 The `json_rpc_url` entry in the `config.yaml` file gets configured via the following command:
 ```bash
 solana config set --url localhost[devnet, testnet etc]
+```
 
 a connection with the cluster by calling
 [`establishConnection`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L92).
