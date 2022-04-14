@@ -233,7 +233,7 @@ Solana on-chain programs are stateless and immutable(which is different from upg
 Also, programs themselves are stored in accounts - they are marked as executable. For more information about account see [here](https://docs.rs/solana-sdk/latest/src/solana_sdk/account.rs.html#22-34).
 
 
-> **Note**: There is limit how much storage space(currently 10MB) an account can have and space incurs cost. Incurred cost is paid via rent. If we pay 
+> **Note**: There is limit how much storage space(currently 10MB) an account can have. Space incurs cost. Incurred cost is paid via rent. An account can be rent exempt if it maintains atleast two years worth of rent as balance in its account. See more [here](https://docs.solana.com/developing/programming-model/accounts). On-chain programs are expected to be rent exempt otherwise they would be purged from the chain. 
 
 
 The client ensures there is an account available to pay for transactions,
