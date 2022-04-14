@@ -253,6 +253,10 @@ Hey look - the transaction has gone through and account got created! Holy crap, 
 
 ### Check if the counter on-chain program has been deployed
 
+Deployment [verification](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L238) starts by checking for the existence [program keypair](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L26) that must have been at the [program build phase](#build-the-on-chain-program).
+
+
+
 In [`checkProgram`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L144),
 the client loads the keypair of the deployed program from `./dist/program/helloworld-keypair.json` and uses
 the public key for the keypair to fetch the program account. If the program doesn't exist, the client halts
