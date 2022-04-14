@@ -34,14 +34,14 @@ The project comprises of:
     - [Expected output](#expected-output)
       - [Not seeing the expected output?](#not-seeing-the-expected-output)
     - [Project structure](#project-structure)
-  - [Learn about Solana](#learn-about-solana)
-  - [Learn about the client](#learn-about-the-client)
+
+  - [More about the client](#more-about-the-client)
     - [Entrypoint](#entrypoint)
     - [Establish a connection to the cluster](#establish-a-connection-to-the-cluster)
     - [Load the helloworld on-chain program if not already loaded](#load-the-helloworld-on-chain-program-if-not-already-loaded)
     - [Send a "Hello" transaction to the on-chain program](#send-a-hello-transaction-to-the-on-chain-program)
     - [Query the Solana account used in the "Hello" transaction](#query-the-solana-account-used-in-the-hello-transaction)
-  - [Learn about the on-chain program](#learn-about-the-on-chain-program)
+  - [More about the on-chain program](#more-about-the-on-chain-program)
     - [Programming on Solana](#programming-on-Solana)
   - [Pointing to a public Solana cluster](#pointing-to-a-public-solana-cluster)
   - [Expand your skills with advanced examples](#expand-your-skills-with-advanced-examples)
@@ -207,19 +207,9 @@ Fee for message 5000
 Counter value 1
 
 
-## Learn about Solana
+## More about the client
 
-More information about how Solana works is available in the [Solana
-documentation](https://docs.solana.com/) and all the source code is available on
-[github](https://github.com/solana-labs/solana)
-
-Further questions? Visit us on [Discord](https://discordapp.com/invite/pquxPsq)
-
-## Learn about the client
-
-The client in this example is written in TypeScript using:
-- [Solana web3.js SDK](https://github.com/solana-labs/solana-web3.js)
-- [Solana web3 API](https://solana-labs.github.io/solana-web3.js)
+The client is a rust cli program with a main function.
 
 ### Entrypoint
 
@@ -263,9 +253,9 @@ numerical count in the "greeter" account's data.  The client queries the
 been greeted by calling
 [`reportGreetings`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L226).
 
-## Learn about the on-chain program
+## More about the on-chain program
 
-The [on-chain helloworld program](/src/program-rust/Cargo.toml) is a Rust program
+The [on-chain counter program](program/Cargo.toml) is a Rust program
 compiled to [Berkeley Packet Filter
 (BPF)](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) bytecode and stored as an
 [Executable and Linkable Format (ELF) shared
