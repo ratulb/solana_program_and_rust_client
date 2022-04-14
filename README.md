@@ -53,11 +53,8 @@ Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https:/
 If you decide to open in Gitpod then refer to
 [README-gitpod.md](README-gitpod.md), otherwise continue reading.
 
-The following dependencies are required to build and run this example, depending
-on your OS, they may already be installed:
+The following dependencies are required to build and run this example:
 
-- Install node (v14 recommended)
-- Install npm
 - Install Rust v1.60.0 or later from https://rustup.rs/
 - Install Solana v1.10.5 or later from
   https://docs.solana.com/cli/install-solana-cli-tools
@@ -91,17 +88,17 @@ Start a local Solana cluster:
 ```bash
 solana-test-validator
 ```
+If you want start with a clean slate after couple of trials, you can do:
+Start a local Solana cluster:
+```bash
+solana-test-validator --reset
+```
+
 > **Note**: You may need to do some [system tuning](https://docs.solana.com/running-validator/validator-start#system-tuning) (and restart your computer) to get the validator to run
 
 Listen to transaction logs:
 ```bash
 solana logs
-```
-
-### Install npm dependencies
-
-```bash
-npm install
 ```
 
 ### Build the on-chain program
