@@ -146,23 +146,8 @@ Counter value 1
 
 - Ensure you've [started the local cluster](#start-local-solana-cluster),
   [built the on-chain program](#build-the-on-chain-program) and [deployed the program to the cluster](#deploy-the-on-chain-program).
-
-### Project structure
-
-The following image shows the project layout. We are making use of cargo [workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html).
-- [program](https://github.com/ratulb/solana_counter_program/tree/main/program) - this is the on-chain counter program
-- [client](https://github.com/ratulb/solana_counter_program/tree/main/client) - this is the rust client program that invokes the program to increament the counter.
-- [common](https://github.com/ratulb/solana_counter_program/tree/main/common) - this crate contains the enum/structs shared by both program and client.
-
-<p align="left">
-  <a href="#project_structure">
-    <img alt="Project structure" src="solana_counter_program.png" width="350" height="100"/>
-  </a>
-</p>
-
-For experimentation, tweaking files under the program folder would require [rebuild](#build-the-on-chain-program) and [redeployment](#deploy-the-on-chain-program-locally).
-
-Now when you rerun `cargo run`, you should see the results of your changes.
+  
+  
 
 ### Deploy to devnet
 
@@ -194,6 +179,23 @@ solana airdrop 1
 ```bash
 cargo run
 ```
+
+### Project structure
+
+The following image shows the project layout. We are making use of cargo [workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html).
+- [program](https://github.com/ratulb/solana_counter_program/tree/main/program) - this is the on-chain counter program
+- [client](https://github.com/ratulb/solana_counter_program/tree/main/client) - this is the rust client program that invokes the program to increament the counter.
+- [common](https://github.com/ratulb/solana_counter_program/tree/main/common) - this crate contains the enum/structs shared by both program and client.
+
+<p align="left">
+  <a href="#project_structure">
+    <img alt="Project structure" src="solana_counter_program.png" width="350" height="100"/>
+  </a>
+</p>
+
+For experimentation, tweaking files under the program folder would require [rebuild](#build-the-on-chain-program) and [redeployment](#deploy-the-on-chain-program-locally).
+
+Now when you rerun `cargo run`, you should see the results of your changes.
 ## More about the client
 
 The client is a rust cli [program](https://github.com/ratulb/solana_counter_program/blob/main/client/src/main.rs) with a main function.
@@ -222,7 +224,7 @@ Also, programs themselves are stored in accounts - they are marked as executable
 
 > **Note**: There is limit on how much storage space(currently 10MB) an account can have. Space incurs cost. Incurred cost is paid via rent. An account can be rent exempt if it maintains atleast two years worth of rent as balance in its account. See more [here](https://docs.solana.com/developing/programming-model/accounts). On-chain programs are expected to be rent exempt otherwise they would be purged from the chain. Amount of lamports required for an account to be rent exempt can be calculated [programmatically](https://docs.rs/solana-client/latest/src/solana_client/rpc_client.rs.html#3531-3536) or via the cli as shown:
 ```bash
-solana rent 1000 [rent for 1000 bytes]
+solana rent 1000 [in bytes]
 ```
 
 
