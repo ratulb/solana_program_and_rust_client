@@ -148,6 +148,11 @@ Counter value 1
   [built the on-chain program](#build-the-on-chain-program) and [deployed the program to the cluster](#deploy-the-on-chain-program).
 ### Project structure
 
+The following image shows the project layout. We are making use of cargo [workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html).
+- `program` - this is the on-chain counter program
+- `client` - this is the rust client program that invokes the program to increament the counter.
+- `common` - this crate contains the enum/structs shared by both program and client.
+
 To customize the client, make changes to the files under `./client/src`.  If you change any files under `/program/src` or `/src/program-c` you will need to
 [rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program](#deploy-the-on-chain-program).
 <p align="center">
