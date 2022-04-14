@@ -236,7 +236,7 @@ We fetch minimum required lamports balance for the counter account [here](https:
 
 After this - we proceed to construct the system instruction for creating the counter account in this [section](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L188-L195). We pass the lamports amount, space and owner(program id) along with other relevant fields.
 
-Next, we [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L198-L201) the latest blockhash from the solana network. This is a measure of how long ago the client has seen the network state and used by the network to accept/reject query and transaction.
+Next, we [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L198-L201) the latest blockhash from the solana network. This is a measure of how long ago the client has seen the network state and used by the network to accept/reject query and [transaction](https://docs.rs/solana-sdk/1.10.8/solana_sdk/transaction/struct.Transaction.html).
 
 We [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L206-L209) network again to find out the required fee for the transaction message - this is the amount for executing transaction on the network passsing the message and the blockhash retrieved in the previous step. 
 
@@ -244,7 +244,7 @@ We sum up the minimum rent exemption lamports and transaction cost([fee_for_mess
 
 At the end, after jumping all these hoops, we [send our account setup transaction across](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L218-L222) to the network and keep our fingers crossed - hoping that our transaction would go through.
 
-We get back a transaction signature! Much awaited sweet fruit.
+We get back a transaction [signature](https://docs.rs/solana-sdk/1.10.8/solana_sdk/signature/struct.Signature.html)! Much awaited sweet fruit.
 We can make use of the signature to find out the transaction status, if we want.
 But I am way too tired. I leave it at that - ignore the signature!
 
@@ -253,7 +253,9 @@ Hey look - the transaction has gone through and account got created! Holy crap, 
 
 ### Check if the counter on-chain program has been deployed
 
-Deployment [verification](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L238) starts by checking for the existence [program keypair](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L26) that must have been at the [program build phase](#build-the-on-chain-program).
+Deployment [verification](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L238) starts by checking for the existence [program keypair](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L26) that must have been at the [program build phase](#build-the-on-chain-program). If [keypair](https://docs.rs/solana-sdk/1.10.8/solana_sdk/signer/keypair/index.html) can not be found - the program exits with appropriate error message.
+We try to retrieve the program account corresponding to the [pubkey](https://docs.rs/solana-sdk/latest/solana_sdk/pubkey/struct.Pubkey.html) of the program keypair - here the intent being two folds - to verify that the program has been deployed to the chain and it indeed is executable.
+
 
 
 
