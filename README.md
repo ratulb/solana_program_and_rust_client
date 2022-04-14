@@ -151,7 +151,7 @@ Counter value 1
 
 The following image shows the project layout. We are making use of cargo [workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html).
 - `program` - this is the on-chain counter program
-- `client` - this is the rust client program that invokes the program to increament the counter.
+- [`client`](https://github.com/ratulb/solana_counter_program/tree/main/client) - this is the rust client program that invokes the program to increament the counter.
 - `common` - this crate contains the enum/structs shared by both program and client.
 
 <p align="left">
