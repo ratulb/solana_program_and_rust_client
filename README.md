@@ -108,8 +108,7 @@ Go inside the 'solana_counter_program' directory if not already done:
 
 ```bash
 cd solana_counter_program
-```
-```bash
+
 cargo build-bpf
 ```
 ### Deploy the on-chain program
