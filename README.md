@@ -160,7 +160,7 @@ The following image shows the project layout. We are making use of cargo [worksp
   </a>
 </p>
 
-To tweak the client, make changes to the files under `./client/src`.  If you change any files under `./program/src` you will need to [rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program](#deploy-the-on-chain-program-locally).
+For experimentation, tweaking files under the program folder would require [rebuild](#build-the-on-chain-program) and [redeployment](#deploy-the-on-chain-program-locally).
 
 Now when you rerun `cargo run`, you should see the results of your changes.
 
