@@ -172,8 +172,12 @@ solana program deploy target/deploy/program.so
 
 > **Note**: You may not have required sol balance to deploy and run transactions in devnet or testnet. To request sol into your account do an airdrop:
 
+#### Check account sol balance:
 ```bash
 solana balance
+```
+#### Request sol airdrop:
+```bash
 solana airdrop 1
 ```
 
