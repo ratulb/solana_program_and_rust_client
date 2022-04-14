@@ -33,7 +33,7 @@ The project comprises of:
     - [Run the rust client](#run-the-rust-client)
     - [Expected output](#expected-output)
       - [Not seeing the expected output?](#not-seeing-the-expected-output)
-    - [Customizing the Program](#customizing-the-program)
+    - [Project structure](#project-structure)
   - [Learn about Solana](#learn-about-solana)
   - [Learn about the client](#learn-about-the-client)
     - [Entrypoint](#entrypoint)
@@ -146,7 +146,7 @@ Counter value 1
 
 - Ensure you've [started the local cluster](#start-local-solana-cluster),
   [built the on-chain program](#build-the-on-chain-program) and [deployed the program to the cluster](#deploy-the-on-chain-program).
-### Customizing the Program
+### Project structure
 
 To customize the client, make changes to the files under `./client/src`.  If you change any files under `/program/src` or `/src/program-c` you will need to
 [rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program](#deploy-the-on-chain-program).
