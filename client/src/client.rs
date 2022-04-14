@@ -22,8 +22,8 @@ use std::str::FromStr;
 
 static COUNTER_ACCOUNT_SEED: &str = "COUNTER";
 static COUNTER_ACCOUNT_DATA_SIZE: usize = std::mem::size_of::<Counter>(); //bytes
-static PROGRAM_PATH: &str = "../target/deploy/counter_program.so";
-static PROGRAM_KEYPAIR: &str = "../target/deploy/counter_program-keypair.json";
+static PROGRAM_PATH: &str = "./target/deploy/program.so";
+static PROGRAM_KEYPAIR: &str = "./target/deploy/program-keypair.json";
 const BPF_LOADER_UPGRADABLE: &str = "BPFLoaderUpgradeab1e11111111111111111111111";
 const BPF_LOADER: &str = "BPFLoader2111111111111111111111111111111111";
 
@@ -278,8 +278,8 @@ impl Client {
             Err(err) => {
                 eprintln!("Error retrieving on-chain program account info {}", err);
                 match Path::new(PROGRAM_PATH).exists() {
-                    true => Err("Program may not have been deployed"),
-                    false => Err("Program may not have been built"),
+                    true => return Err("On-chain program may not have been deployed".to_string()),
+                    false => return Err("On-chain program may not have been built".to_string()),
                 }
             }
         };
