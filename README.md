@@ -219,7 +219,7 @@ The [main function](https://github.com/ratulb/solana_counter_program/blob/27d5aa
 #### Instantiates the client that wraps up an underlying RpcClient
 
 [Client](https://github.com/ratulb/solana_counter_program/blob/main/client/src/client.rs)
-creates an instance of [RpcClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html) in its [get_rpc_client](https://github.com/ratulb/solana_counter_program/blob/8ca2bd8130d0f385d2720b2623abf7f0965e0566/client/src/client.rs#L48) methhod. This sets up a Http client to the solana network that is picked up from `~/.config/solana/cli/config.yml`. Once the client has been setup - we can start interacting with solana network for things like querying about accounts, sending transactions, getting cluster related information and many more. The exhaustive list can be found [here](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html#implementations).
+creates an instance of [RpcClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html) in its [get_rpc_client](https://github.com/ratulb/solana_counter_program/blob/8ca2bd8130d0f385d2720b2623abf7f0965e0566/client/src/client.rs#L48) methhod. This sets up a Http client to the solana network that is picked up from `~/.config/solana/cli/config.yml`. Once the client has been setup - we can start interacting with solana network for things like querying about accounts, sending transactions, getting cluster related information and much more. The exhaustive list can be found [here](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html#implementations).
 
 The `json_rpc_url` entry in the `config.yaml` file gets configured via the following command:
 ```bash
@@ -228,7 +228,13 @@ solana config set --url localhost[devnet, testnet etc]
 
 #### Setup an account to store counter program's state
 
-Solana on-chain programs are stateless and immutable(which is different from upgradable - we can keep modifying and deploying a program again and again so long as we don't supply the `--final` flag to `solana program deploy program.so` or don't use `solana deploy program.so` - which sets up 'BPFLoader2111111111111111111111111111111111' loader as program owner instead of `BPFLoaderUpgradeab1e11111111111111111111111` and does not allow us to upgrade the program further unless we specify different program address). Also, looking at the program [crate_type](https://github.com/ratulb/solana_counter_program/blob/main/program/Cargo.toml#L14), we see that `crate-type` is "cdylib", "lib". We can ommit the "lib" type that would work just fine. "cdylib" produces a .so file in linux and .dll file in windows. These are shared libraries - they do not maintain state across invocations! Where then our increamental counter value would be stored? Well, you may have guessed it - in accounts. Its accounts all the way down. If a program in solana wants to persist state, it would have to make use of accounts that it owns. 
+Solana on-chain programs are stateless and immutable(which is different from upgradable - we can keep modifying and deploying a program again and again so long as we don't supply the `--final` flag to `solana program deploy program.so` or don't use `solana deploy program.so` - which sets up 'BPFLoader2111111111111111111111111111111111' loader as program owner instead of `BPFLoaderUpgradeab1e11111111111111111111111` and does not allow us to upgrade the program further unless we specify different program address). Also, looking at the program [crate_type](https://github.com/ratulb/solana_counter_program/blob/main/program/Cargo.toml#L14), we see that `crate-type` is "cdylib", "lib". We can ommit the "lib" type that would work just fine. "cdylib" produces a .so file in linux and .dll file in windows. These are shared libraries - they do not maintain state across invocations! Where then our increamental counter value would be stored? Well, you may have guessed it - in accounts. Its accounts all the way down. If a program in solana wants to persist state, it would have to make use of accounts that it owns.
+
+Also, programs themselves are stored in accounts - they are marked as executable. For more information about account see [here](https://docs.rs/solana-sdk/latest/src/solana_sdk/account.rs.html#22-34).
+
+
+> **Note**: There is limit how much storage space(currently 10MB) an account can have and space incurs cost. Incurred cost is paid via rent. If we pay 
+
 
 The client ensures there is an account available to pay for transactions,
 and creates one if there is not, by calling
