@@ -27,13 +27,13 @@ The project comprises of:
     - [Configure CLI](#configure-cli)
     - [Start local Solana cluster](#start-local-solana-cluster)
     - [Build the on-chain program](#build-the-on-chain-program)
-    - [Deploy the on-chain program](#deploy-the-on-chain-program)
+    - [Deploy the on-chain program locally](#deploy-the-on-chain-program-locally)
     - [Deploy to devnet](#deploy-to-devnet)
-    - [Deploy the on-chain program to testnet](#deploy-the-on-chain-program-testnet)
+    - [Deploy to testnet](#deploy-to-testnet)
     - [Run the rust client](#run-the-rust-client)
     - [Expected output](#expected-output)
       - [Not seeing the expected output?](#not-seeing-the-expected-output)
-    - [Customizing the Program](#customizing-the-program)
+    - [Project structure](#project-structure)
   - [Learn about Solana](#learn-about-solana)
   - [Learn about the client](#learn-about-the-client)
     - [Entrypoint](#entrypoint)
@@ -100,15 +100,14 @@ solana-test-validator --reset
 
 > **Note**: You may need to do some [system tuning](https://docs.solana.com/running-validator/validator-start#system-tuning) (and restart your computer) to get the validator to run
 
-Listen to transaction logs:
+On-chain deployed program's logs can be viewed by launcing a separate terminal and firing the following command:
 ```bash
 solana logs
 ```
+> **None**: For logging messages inside the on-chain program, we should use the `msg!` [macro](https://docs.solana.com/developing/on-chain-programs/developing-rust#logging).
 
 ### Build the on-chain program
 
-There is both a Rust and C version of the on-chain program, whichever is built
-last will be the one used when running the example.
 Go inside the 'solana_counter_program' directory if not already done:
 
 ```bash
@@ -116,7 +115,7 @@ cd solana_counter_program
 
 cargo build-bpf
 ```
-### Deploy the on-chain program
+### Deploy the on-chain program locally
 
 ```bash
 solana program deploy target/deploy/program.so
@@ -147,10 +146,9 @@ Counter value 1
 
 - Ensure you've [started the local cluster](#start-local-solana-cluster),
   [built the on-chain program](#build-the-on-chain-program) and [deployed the program to the cluster](#deploy-the-on-chain-program).
-### Customizing the Program
+### Project structure
 
-To customize the example, make changes to the files under `/src`.  If you change
-any files under `/src/program-rust` or `/src/program-c` you will need to
+To customize the client, make changes to the files under `./client/src`.  If you change any files under `/program/src` or `/src/program-c` you will need to
 [rebuild the on-chain program](#build-the-on-chain-program) and [redeploy the program](#deploy-the-on-chain-program).
 
 Now when you rerun `npm run start`, you should see the results of your changes.
@@ -158,8 +156,45 @@ Now when you rerun `npm run start`, you should see the results of your changes.
 ### Deploy to devnet
 
 ```bash
+solana config set --url d
 solana program deploy target/deploy/program.so
 ```
+#### Or
+### Deploy to testnet
+
+```bash
+solana config set -ut
+
+solana program deploy target/deploy/program.so
+```
+
+> **Note**: You may not have required sol balance to deploy and run transactions in devnet or testnet. To request sol into your account do an airdrop:
+
+#### Check account sol balance:
+```bash
+solana balance
+```
+#### Request sol airdrop:
+```bash
+solana airdrop 1
+```
+
+#### Run the client:
+```bash
+cargo run
+```
+#### Output when connected to devnet:
+Connecting to cluster...https://api.devnet.solana.com
+Connection to cluster established
+Cluster node solana version 1.9.15
+Counter account does not exist AccountNotFound: pubkey=3MMqqJqpQkTR7rXotYBrZoYear33cQ6Mgdmb5omjh5s7. Would create
+Freestay lamports : 946560
+Fee for message 5000
+Total amount for transaction 951560 lamports
+Binary address HnkMPHhde9UCq3bRGLFs26HnZ42r1yRVHn5jgyiDGvxq
+Fee for message 5000
+Counter value 1
+
 
 ## Learn about Solana
 
