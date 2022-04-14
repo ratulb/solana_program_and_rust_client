@@ -219,17 +219,14 @@ The [main function](https://github.com/ratulb/solana_counter_program/blob/27d5aa
 ### Instantiates the client that wraps up an underlying RpcClient
 
 [Client](https://github.com/ratulb/solana_counter_program/blob/main/client/src/client.rs)
-creates an instance of [RpcClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html) in its [get_rpc_client](https://github.com/ratulb/solana_counter_program/blob/8ca2bd8130d0f385d2720b2623abf7f0965e0566/client/src/client.rs#L48) methhod. This sets up a Http client to the solana network that is picked up from `~/.config/solana/cli/config.yml`.
+creates an instance of [RpcClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html) in its [get_rpc_client](https://github.com/ratulb/solana_counter_program/blob/8ca2bd8130d0f385d2720b2623abf7f0965e0566/client/src/client.rs#L48) methhod. This sets up a Http client to the solana network that is picked up from `~/.config/solana/cli/config.yml`. Once the client has been setup - we can start interacting with solana network for things like querying about accounts, sending transactions, getting cluster related information and many more.
 
 The `json_rpc_url` entry in the `config.yaml` file gets configured via the following command:
 ```bash
 solana config set --url localhost[devnet, testnet etc]
 ```
 
-a connection with the cluster by calling
-[`establishConnection`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L92).
-
-### Establish an account to pay for transactions
+### Setup an account to store counter program's state
 
 The client ensures there is an account available to pay for transactions,
 and creates one if there is not, by calling
