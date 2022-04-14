@@ -213,13 +213,17 @@ The client is a rust cli [program](https://github.com/ratulb/solana_counter_prog
 
 ### Main function
 
-The [client's main function](https://github.com/ratulb/solana_counter_program/blob/27d5aa6aa4c7ec14fe049837e8beff4bb7548f3e/client/src/main.rs#L5) does following five things:
+The [main function](https://github.com/ratulb/solana_counter_program/blob/27d5aa6aa4c7ec14fe049837e8beff4bb7548f3e/client/src/main.rs#L5) does following five things:
 
 
 ### Instantiates the client that wraps up an underlying RpcClient
 
-The [client] (https://github.com/ratulb/solana_counter_program/blob/main/client/src/client.rs)
-creates an instance of [RpcClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html). This sets up a Http client to the solana network that is picked up from `~/.config/solana/cli/config.yaml`.
+[Client](https://github.com/ratulb/solana_counter_program/blob/main/client/src/client.rs)
+creates an instance of [RpcClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html). This sets up a Http client to the solana network that is picked up from `~/.config/solana/cli/config.yml`.
+
+The `json_rpc_url` entry in the `config.yaml` file gets configured via the following command:
+```bash
+solana config set --url localhost[devnet, testnet etc]
 
 a connection with the cluster by calling
 [`establishConnection`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L92).
