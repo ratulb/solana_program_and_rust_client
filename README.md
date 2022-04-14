@@ -194,19 +194,6 @@ solana airdrop 1
 ```bash
 cargo run
 ```
-#### Output when connected to devnet:
-Connecting to cluster...https://api.devnet.solana.com
-Connection to cluster established
-Cluster node solana version 1.9.15
-Counter account does not exist AccountNotFound: pubkey=3MMqqJqpQkTR7rXotYBrZoYear33cQ6Mgdmb5omjh5s7. Would create
-Freestay lamports : 946560
-Fee for message 5000
-Total amount for transaction 951560 lamports
-Binary address HnkMPHhde9UCq3bRGLFs26HnZ42r1yRVHn5jgyiDGvxq
-Fee for message 5000
-Counter value 1
-
-
 ## More about the client
 
 The client is a rust cli [program](https://github.com/ratulb/solana_counter_program/blob/main/client/src/main.rs) with a main function.
