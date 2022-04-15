@@ -284,15 +284,6 @@ impl Client {
             }
         };
 
-        //Lets  see the owner of the counter account is the program id
-
-        match self.client.get_program_accounts(&program_id) {
-            Ok(accounts) => {
-                let (_counter_account_key, counter_account) = &accounts[0]; //We have only one account
-                assert_eq!(program_id.clone(), counter_account.owner);
-            }
-            Err(_) => panic!("Error while getting program owned accounts"),
-        }
         Ok(())
     }
 
