@@ -259,6 +259,14 @@ Now here is a catch - we can load the program account and check for [executable]
 
 This does not seem to be the case with [bpf loader](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L28) - which does not allow closing a deployed program.
 
+Programs owned by upgradable loader, store their executable bits in a seprate account as can be seen below:
+<p align="left">
+  <a href="#">
+    <img alt="Program" src="step1.png" width="500" height="300"/>
+  </a>
+</p>
+
+We can query the program data account (underlined red in the image) and it will spit out a huge pile of hexadecimal numbers. When we close a program - it is this program data account that gets wiped out - but program account still says it is executable - which is kind of, to say the least, not so helpful. I have filed an [issue](https://github.com/solana-labs/solana/issues/24364) regarding this.
 
 
 
