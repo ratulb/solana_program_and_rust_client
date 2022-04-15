@@ -274,6 +274,9 @@ To handle the case that a deployed on-chain program may have been closed - we lo
 
 ### Send a counter "Increament" transaction to the on-chain program
 
+We send an increament instruction to our on-chain program in [increament_counter](https://github.com/ratulb/solana_counter_program/blob/6ec34295fd32d20afb92edb61d531021520acaac/client/src/client.rs#L291) function.
+
+
 We retrieve the payer, payer pubkey, program pubkey and initialize [counter_instruction](https://github.com/ratulb/solana_counter_program/blob/62a7d51c51857b5d162803a79d82c8a0b9c029d4/client/src/client.rs#L298) to [CounterInstruction::Increament](https://github.com/ratulb/solana_counter_program/blob/62a7d51c51857b5d162803a79d82c8a0b9c029d4/common/src/instruction.rs#L4-L6). 
 
 
