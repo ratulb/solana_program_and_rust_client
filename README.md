@@ -274,7 +274,9 @@ To handle the case that a deployed on-chain program may have been closed - we lo
 
 ### Send a counter "Increament" transaction to the on-chain program
 
-[Here](https://github.com/ratulb/solana_counter_program/blob/6ec34295fd32d20afb92edb61d531021520acaac/client/src/client.rs#L291) we submit a transaction to our on-chain counter program to increament the counter value that is maintained in the program's owned account.
+[Here](https://github.com/ratulb/solana_counter_program/blob/6ec34295fd32d20afb92edb61d531021520acaac/client/src/client.rs#L291) we submit a transaction to our on-chain counter program to increament the counter value that is maintained in its owned account.
+
+Usual steps like loading payer keypair, program id, querying for latest blockhash and fee for message happen in appropriate places - but one thing to note here is that we are [packing an enum](https://github.com/ratulb/solana_counter_program/blob/6ec34295fd32d20afb92edb61d531021520acaac/client/src/client.rs#L301) with the instruction that we are creating which we define [here](https://github.com/ratulb/solana_counter_program/blob/421d7cfb80fab2a02b0982f03d2a47356e7eadfe/common/src/instruction.rs#L4).
 
 
 We submit a transaction to our on-chain program to increament the value of our counter 
