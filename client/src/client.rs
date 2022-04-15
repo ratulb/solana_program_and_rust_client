@@ -1,7 +1,6 @@
 use crate::config;
 use crate::errors::Result;
 use borsh::BorshDeserialize;
-use borsh::BorshSerialize;
 use common::Counter;
 use common::CounterInstruction;
 use solana_client::rpc_client::RpcClient;
@@ -294,19 +293,15 @@ impl Client {
         let payer_pubkey = payer.pubkey();
         let program_id = Self::get_program_id()
             .ok_or("Program pubkey not found! Program may not have been built")?;
-
         let counter_pubkey = Self::get_counter_pubkey();
-
+        
         let counter_instruction = CounterInstruction::Increament;
-
-        let mut instr_in_bytes: Vec<u8> = Vec::new();
-        counter_instruction.serialize(&mut instr_in_bytes).unwrap();
-
         let instruction = Instruction::new_with_borsh(
             program_id,
             &counter_instruction,
             vec![AccountMeta::new(counter_pubkey, false)],
         );
+        
         let blockhash = self
             .client
             .get_latest_blockhash()
