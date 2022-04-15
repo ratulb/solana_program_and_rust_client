@@ -272,14 +272,7 @@ We can query the program data account (underlined red in the image) and it will 
 
 To handle the case that a deployed on-chain program may have been closed - we look at the owner string reference of loaders and futher [query](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L248-L270) for the program data account if the loader happens to be upgradable.
 
-
-In [`checkProgram`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L144),
-the client loads the keypair of the deployed program from `./dist/program/helloworld-keypair.json` and uses
-the public key for the keypair to fetch the program account. If the program doesn't exist, the client halts
-with an error. If the program does exist, it will create a new account with the program assigned as its owner
-to store program state (number of hello's processed).
-
-### Send a "Hello" transaction to the on-chain program
+### Send a counter "Increament" transaction to the on-chain program
 
 The client then constructs and sends a "Hello" transaction to the program by
 calling
