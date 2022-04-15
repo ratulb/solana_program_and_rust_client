@@ -255,7 +255,10 @@ Hey look - the transaction has gone through and account got created! Holy crap, 
 
 Deployment [verification](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L238) starts by checking for the existence [program keypair](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L26) that must have been generated at the [program build phase](#build-the-on-chain-program). If [keypair](https://docs.rs/solana-sdk/latest/solana_sdk/signer/keypair/index.html) can not be found - the program exits with appropriate error message.
 We try to retrieve the program account corresponding to the [pubkey](https://docs.rs/solana-sdk/latest/solana_sdk/pubkey/struct.Pubkey.html) of the program keypair - here the intent being two folds - to verify that the program has been deployed to the chain and it indeed is executable.
-Now here is a catch - we can load the program account and check for [executable](https://github.com/solana-labs/solana/blob/77182fcdda510154ed1194e0188ede80c64e7907/sdk/src/account.rs#L31) flag on it and decide whether to proceed any futher or not. But alone does not seem to be sufficient - because programs owned by the [upgradable bpf loader](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L27) maybe closed(`solana program close 'program_id'`) - it will still report the program as being executable.
+Now here is a catch - we can load the program account and check for [executable](https://github.com/solana-labs/solana/blob/77182fcdda510154ed1194e0188ede80c64e7907/sdk/src/account.rs#L31) flag on it and decide whether to proceed further or not. But this alone does not seem to be sufficient - because programs owned by the [upgradable bpf loader](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L27) maybe closed(`solana program close 'program_id'`) - it will still report the program as being executable.
+
+This does not seem to be the case with [bpf loader](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L28) - which does not allow closing a deployed program.
+
 
 
 
