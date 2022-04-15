@@ -244,7 +244,7 @@ We sum up the minimum rent exemption lamports and transaction cost([fee_for_mess
 
 At the end, after jumping all these hoops, we [send our account setup transaction across](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L218-L222) to the network and keep our fingers crossed - hoping that our transaction would go through.
 
-We get back a transaction [signature](https://docs.rs/solana-sdk/1.10.8/solana_sdk/signature/struct.Signature.html)! Much awaited sweet fruit.
+We get back a transaction [signature](https://docs.rs/solana-sdk/latest/solana_sdk/signature/struct.Signature.html)! Much awaited sweet fruit.
 We can make use of the signature to find out the transaction status, if we want.
 But I am way too tired. I leave it at that - ignore the signature!
 
@@ -253,9 +253,9 @@ Hey look - the transaction has gone through and account got created! Holy crap, 
 
 ### Check if the counter on-chain program has been deployed
 
-Deployment [verification](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L238) starts by checking for the existence [program keypair](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L26) that must have been at the [program build phase](#build-the-on-chain-program). If [keypair](https://docs.rs/solana-sdk/1.10.8/solana_sdk/signer/keypair/index.html) can not be found - the program exits with appropriate error message.
+Deployment [verification](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L238) starts by checking for the existence [program keypair](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L26) that must have been generated at the [program build phase](#build-the-on-chain-program). If [keypair](https://docs.rs/solana-sdk/latest/solana_sdk/signer/keypair/index.html) can not be found - the program exits with appropriate error message.
 We try to retrieve the program account corresponding to the [pubkey](https://docs.rs/solana-sdk/latest/solana_sdk/pubkey/struct.Pubkey.html) of the program keypair - here the intent being two folds - to verify that the program has been deployed to the chain and it indeed is executable.
-
+Now here is a catch - we can load the program account and check for [executable](https://github.com/solana-labs/solana/blob/77182fcdda510154ed1194e0188ede80c64e7907/sdk/src/account.rs#L31) flag on it and decide whether to proceed any futher or not. But alone does not seem to be sufficient - because programs owned by the [upgradable bpf loader](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L27) maybe closed(`solana program close 'program_id'`) - it will still report the program as being executable.
 
 
 
