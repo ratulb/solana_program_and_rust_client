@@ -270,7 +270,7 @@ We can query the program data account (underlined red in the image) and it will 
 
 > **Note**: `solana program deploy program.so` - deployes to upgradable loader and `solana deploy program.so` - deploys [to bpf loader](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L28).
 
-To handle the case that a deployed on-chain program may have been closed - we look at the owner string reference of loaders and futher [query](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L28) for the program data account if the loader happens to be upgradable.
+To handle the case that a deployed on-chain program may have been closed - we look at the owner string reference of loaders and futher [query](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L248-L270) for the program data account if the loader happens to be upgradable.
 
 
 In [`checkProgram`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L144),
