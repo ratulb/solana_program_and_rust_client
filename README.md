@@ -274,6 +274,10 @@ To handle the case that a deployed on-chain program may have been closed - we lo
 
 ### Send a counter "Increament" transaction to the on-chain program
 
+We retrieve the payer, payer pubkey, program pubkey and initialize [counter_instruction](https://github.com/ratulb/solana_counter_program/blob/62a7d51c51857b5d162803a79d82c8a0b9c029d4/client/src/client.rs#L298) to `CounterInstruction::Increament`. We have got just one variant of [CounterInstruction](https://github.com/ratulb/solana_counter_program/blob/62a7d51c51857b5d162803a79d82c8a0b9c029d4/common/src/instruction.rs#L4-L6). `CounterInstruction::Increament` is one of the payload parameters to our on-chain program. When we write an on-chain solana program - all we have to do is provide a function whose type signature matches [this](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L25-L26).
+
+
+
 The client then constructs and sends a "Hello" transaction to the program by
 calling
 [`sayHello`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L209).
