@@ -274,6 +274,9 @@ To handle the case that a deployed on-chain program may have been closed - we lo
 
 ### Send a counter "Increament" transaction to the on-chain program
 
+[Here](https://github.com/ratulb/solana_counter_program/blob/6ec34295fd32d20afb92edb61d531021520acaac/client/src/client.rs#L291) we submit a transaction to our on-chain counter program to increament the counter value that is maintained in the program's owned account.
+
+
 We submit a transaction to our on-chain program to increament the value of our counter 
 
 in [increament_counter](https://github.com/ratulb/solana_counter_program/blob/6ec34295fd32d20afb92edb61d531021520acaac/client/src/client.rs#L291) function 
