@@ -278,6 +278,8 @@ To handle the case that a deployed on-chain program may have been closed - we lo
 
 Usual steps like loading payer keypair, program id, querying for latest blockhash and fee for message etc happen in appropriate places - but one thing to note here is that we are packing an enum defined [here](https://github.com/ratulb/solana_counter_program/blob/421d7cfb80fab2a02b0982f03d2a47356e7eadfe/common/src/instruction.rs#L4) with the [instruction](https://github.com/ratulb/solana_counter_program/blob/c102c53ac088f9c26cdfa24169142ce4b632c509/client/src/client.rs#L301).
 
+
+
 `CounterInstruction::Increament` is one of the payload parameters to our on-chain program. When we write an on-chain solana program - all we have to do is provide a function whose type signature matches [this](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L25-L26) and decorate our provided implementation with the [entrypoint macro](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L116). Our program gets compiled to [Berkeley Packet Filter
 (BPF)](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) bytecode and stored as an
 [Executable and Linkable Format (ELF) shared
