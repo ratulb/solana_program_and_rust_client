@@ -30,7 +30,7 @@ The project comprises of:
     - [Project structure](#project-structure)
 
   - [More about the client](#more-about-the-client)
-    - [Entrypoint](#entrypoint)
+    - [Main function](#main-function)
     - [Establish a connection to the cluster](#establish-a-connection-to-the-cluster)
     - [Load the helloworld on-chain program if not already loaded](#load-the-helloworld-on-chain-program-if-not-already-loaded)
     - [Send a "Hello" transaction to the on-chain program](#send-a-hello-transaction-to-the-on-chain-program)
@@ -149,7 +149,7 @@ solana config set -ut
 solana program deploy target/deploy/program.so
 ```
 
-> **Note**: You may not have required sol balance to deploy and run transactions in devnet or testnet. To request sol into your account do an airdrop:
+> **Note**: You may not have required SOL balance to deploy and run transactions in devnet or testnet. To request SOL into your account do an airdrop:
 
 #### Check account sol balance:
 ```bash
