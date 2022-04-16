@@ -277,7 +277,7 @@ To handle the case that a deployed on-chain program may have been closed - we lo
 [Here](https://github.com/ratulb/solana_counter_program/blob/6ec34295fd32d20afb92edb61d531021520acaac/client/src/client.rs#L291) we submit a transaction to our on-chain counter program to increament the counter value that is maintained in its owned account.
 
 Usual steps like loading payer keypair, program id, querying for latest blockhash and fee for message etc happen in appropriate places - but one thing to note here is that we are packing an enum defined [here](https://github.com/ratulb/solana_counter_program/blob/421d7cfb80fab2a02b0982f03d2a47356e7eadfe/common/src/instruction.rs#L4) with the [instruction](https://github.com/ratulb/solana_counter_program/blob/c102c53ac088f9c26cdfa24169142ce4b632c509/client/src/client.rs#L301).
-To invoke a solana on-chain program - we send a Transaction, which contains a message and the encaptulates one or more [instructions](https://github.com/solana-labs/solana/blob/d71986cecf062e2bbbe291e018bf0a4c33e192a5/sdk/program/src/instruction.rs#L324) within it.
+To invoke a solana on-chain program - we send a Transaction, which contains a message and the [message](https://github.com/solana-labs/solana/blob/d71986cecf062e2bbbe291e018bf0a4c33e192a5/sdk/program/src/message/versions/v0/mod.rs#L54) encaptulates one or more [instructions](https://github.com/solana-labs/solana/blob/d71986cecf062e2bbbe291e018bf0a4c33e192a5/sdk/program/src/instruction.rs#L324) within it. We see that `instruction` construct has a [data](https://github.com/solana-labs/solana/blob/d71986cecf062e2bbbe291e018bf0a4c33e192a5/sdk/program/src/instruction.rs#L333) field within it - which of type [Vec<u8>](https://doc.rust-lang.org/std/vec/struct.Vec.html).
 
 
 
