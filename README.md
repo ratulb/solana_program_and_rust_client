@@ -309,8 +309,8 @@ We load the counter account [here](https://github.com/ratulb/solana_counter_prog
 To write an on-chain solana program - primarily we need to follow these steps:
 - Provide a function whose type signature matches [this](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L25-L26).
 - Decorate the implementation with the [entrypoint macro](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L116).
-- Build the on-chain program using - `cargo build-bpf`(#build-the-on-chain-program)
-- Deploy the program to the network - `solana program deploy`(#deploy-the-on-chain-program-locally)
+- [Build the on-chain program using](#build-the-on-chain-program)
+- [Deploy the program to the network)(#deploy-the-on-chain-program-locally)
 
 
 all that is necessary is to provide a function whose type signature matches [this](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L25-L26). 
