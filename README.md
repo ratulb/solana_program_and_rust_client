@@ -210,19 +210,19 @@ The [main function](https://github.com/ratulb/solana_counter_program/blob/27d5aa
 [Client](https://github.com/ratulb/solana_counter_program/blob/main/client/src/client.rs)
 creates an instance of [RpcClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html) in its [get_rpc_client](https://github.com/ratulb/solana_counter_program/blob/8ca2bd8130d0f385d2720b2623abf7f0965e0566/client/src/client.rs#L48) methhod. This sets up a Http client to the solana network that is picked up from `~/.config/solana/cli/config.yml`. Once the client has been setup - we can start interacting with solana network for things like querying about accounts, sending transactions, getting cluster related information and much more. The exhaustive list can be found [here](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html#implementations).
 
-The `json_rpc_url` entry in the `config.yaml` file gets configured via the following command:
+The `json_rpc_url` entry in the `config.yaml(/.config/solana/cli/config.yml)` file gets configured via the following command:
 ```bash
 solana config set --url localhost[devnet, testnet etc]
 ```
 
 #### Setup an account to store counter program's state
 
-Solana on-chain programs are stateless and immutable(which is different from upgradable - we can keep modifying and deploying a program again and again so long as we don't supply the `--final` flag to `solana program deploy program.so` or don't use `solana deploy program.so` - which sets up 'BPFLoader2111111111111111111111111111111111' loader as program owner instead of `BPFLoaderUpgradeab1e11111111111111111111111` and does not allow us to upgrade the program further unless we specify different program address). Also, looking at the program [crate_type](https://github.com/ratulb/solana_counter_program/blob/main/program/Cargo.toml#L14), we see that `crate-type` is "cdylib", "lib". We can ommit the "lib" type that would work just fine. "cdylib" produces a .so file in linux and .dll file in windows. These are shared libraries - they do not maintain state across invocations! Where then our increamental counter value would be stored? Well, you may have guessed it - in accounts. Its accounts all the way down. If a program in solana wants to persist state, it would have to make use of accounts that it owns.
+Solana on-chain programs are stateless and immutable(which is different from upgradable - we can keep modifying and deploying a program again and again so long as we don't supply the `--final` flag to `solana program deploy program.so` or don't use `solana deploy program.so` - which sets up 'BPFLoader2111111111111111111111111111111111' loader as program owner instead of `BPFLoaderUpgradeab1e11111111111111111111111` and does not allow us to upgrade the program further unless we specify different program address). Also, looking at the program [crate_type](https://github.com/ratulb/solana_counter_program/blob/0684cbf58aa497de85a6625caf773ac985a808dd/program/Cargo.toml#L16), we see that `crate-type` is "cdylib", "lib". We can ommit the "lib" type that would work just fine. "cdylib" produces a .so file in linux and .dll file in windows. These are shared libraries - they do not maintain state across invocations! In accounts. If a program in solana wants to persist state, it would have to make use of accounts that it owns.
 
 Also, programs themselves are stored in accounts - they are marked as executable. For more information about account see [here](https://docs.rs/solana-sdk/latest/src/solana_sdk/account.rs.html#22-34).
 
 
-> **Note**: There is limit on how much storage space(currently 10MB) an account can have. Space incurs cost. Incurred cost is paid via rent. An account can be rent exempt if it maintains atleast two years worth of rent as balance in its account. See more [here](https://docs.solana.com/developing/programming-model/accounts). On-chain programs are expected to be rent exempt otherwise they would be purged from the chain. Amount of lamports required for an account to be rent exempt can be calculated [programmatically](https://docs.rs/solana-client/latest/src/solana_client/rpc_client.rs.html#3531-3536) or via the cli as shown:
+> **Note**: There is limit to how much storage space(currently 10MB) an account can have. Space incurs cost. Incurred cost is paid via rent. An account can be rent exempt if it maintains atleast two years worth of rent as balance in its account. See more [here](https://docs.solana.com/developing/programming-model/accounts). On-chain programs are expected to be rent exempt otherwise they would be purged from the chain. Amount of lamports required for an account to be rent exempt can be calculated [programmatically](https://docs.rs/solana-client/latest/src/solana_client/rpc_client.rs.html#3531-3536) or via the cli as shown:
 ```bash
 solana rent 1000 [in bytes]
 ```
@@ -242,13 +242,7 @@ We [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898
 
 We sum up the minimum rent exemption lamports and transaction cost([fee_for_message](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L206)) and do ourselves a lamports [airdrop](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L214-L216). Airdrop request would [not hit the network](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L131) if the payer account has sufficient lamports to provide for the transaction cost and minimum rent exemption amount required for the counter account to stay afloat(aka rent free!).
 
-At the end, after jumping all these hoops, we [send our account setup transaction across](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L218-L222) to the network and keep our fingers crossed - hoping that our transaction would go through.
-
-We get back a transaction [signature](https://docs.rs/solana-sdk/latest/solana_sdk/signature/struct.Signature.html)! Much awaited sweet fruit.
-We can make use of the signature to find out the transaction status, if we want.
-But I am way too tired. I leave it at that - ignore the signature!
-
-Hey look - the transaction has gone through and account got created! Holy crap, looks like solana is a jolly good fellow!
+At the end, we [send our account setup transaction across](https://github.com/ratulb/solana_counter_program/blob/cc994bbe581a0e4fa0da0eb40840982586071594/client/src/client.rs#L218-L222) to the network and We get back a transaction [signature](https://docs.rs/solana-sdk/latest/solana_sdk/signature/struct.Signature.html)! We can make use of the signature to find out the transaction status, if we want. Here we are just ignoring the returned signature.
 
 
 ### Check if the counter on-chain program has been deployed
