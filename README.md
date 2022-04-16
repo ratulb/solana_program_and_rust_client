@@ -279,6 +279,11 @@ In any case, we did not wnat to re-invent the wheel instead used borsh serializa
 We pack our application specific custom data(Which is an enum with just one variant) [here](https://github.com/ratulb/solana_counter_program/blob/dbbb8839b1e6940ab227065a654156b0484228cd/client/src/client.rs#L301) and solana runtime makes that data available to our program [here](https://github.com/ratulb/solana_counter_program/blob/dbbb8839b1e6940ab227065a654156b0484228cd/program/src/entrypoint.rs#L12) and we reconstruct our enum variant [here](https://github.com/ratulb/solana_counter_program/blob/dbbb8839b1e6940ab227065a654156b0484228cd/program/src/processor.rs#L20).
 Its also mandatory that we pass along [accounts](https://github.com/solana-labs/solana/blob/5c7060eaeb384cdff4db9299ecbf52d446110859/sdk/program/src/instruction.rs#L330) that our program reads or modifies during its execution. Our program increaments the counter value in the counter account that its own. Hence we [pass](https://github.com/ratulb/solana_counter_program/blob/18e64665c9add8326f3048b508215d7ab96bb0ac/client/src/client.rs#L302) that information in a [AccountMeta](https://github.com/solana-labs/solana/blob/5c7060eaeb384cdff4db9299ecbf52d446110859/sdk/program/src/instruction.rs#L533) struct marking that as writable. Passing accounts that an on-chain program touches during its execution lets solana runtime parallelize transactions leading to faster execution time. 
 
+> **Note**: This [line](https://github.com/ratulb/solana_counter_program/blob/87acd3c9b62b4dda04075979afe367cfd94bc8b3/client/src/client.rs#L310) is commented out. Its clones the instruction and packs it twice inside the message. What will happen if we uncomment this line and comment out the above line? Check that out!
+
+
+
+
 
 `CounterInstruction::Increament` is one of the payload parameters to our on-chain program. When we write an on-chain solana program - all we have to do is provide a function whose type signature matches [this](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L25-L26) and decorate our provided implementation with the [entrypoint macro](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L116). Our program gets compiled to [Berkeley Packet Filter
 (BPF)](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) bytecode and stored as an
@@ -294,15 +299,17 @@ The transaction contains a single very simple instruction that primarily carries
 the public key of the helloworld program account to call and the "greeter"
 account to which the client wishes to say "Hello" to.
 
-### Query the Solana account used in the "Hello" transaction
+### Query the counter account reading
 
-Each time the client says "Hello" to an account, the program increments a
-numerical count in the "greeter" account's data.  The client queries the
-"greeter" account's data to discover the current number of times the account has
-been greeted by calling
-[`reportGreetings`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L226).
+Each time we run our client program - it [increaments](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/client/src/client.rs#L291) the [count field inside the counter account](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/program/src/processor.rs#L24-L30) owned by our on-chain program.
+We load the counter account [here](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/client/src/client.rs#L329-L338) - deserialize the data field of the account into Counter struct and print out the count fields value.
 
 ## More about the on-chain program
+
+To write an on-chain solana program - all that is necessary is to provide a function whose type signature matches [this](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L25-L26) 
+
+
+
 
 The [on-chain counter program](program/Cargo.toml) is a Rust program
 compiled to [Berkeley Packet Filter
