@@ -42,12 +42,6 @@ The project comprises of:
 
 ## Quick Start
 
-[![Open in
-Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/solana-labs/example-helloworld)
-
-If you decide to open in Gitpod then refer to
-[README-gitpod.md](README-gitpod.md), otherwise continue reading.
-
 The following dependencies are required to build and run this example:
 
 - Install Rust v1.60.0 or later from https://rustup.rs/
