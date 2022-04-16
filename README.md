@@ -31,7 +31,7 @@ The project comprises of:
 
   - [More about the client](#more-about-the-client)
     - [Main function](#main-function)
-    - [Establish a connection to the cluster](#instantiates-the-client-that-wraps-up- an-underlying-rpcclient)
+    - [Establish a connection to the cluster](#instantiates-the-client-that-wraps-up-an-underlying-rpcclient)
     - [Load the helloworld on-chain program if not already loaded](#load-the-helloworld-on-chain-program-if-not-already-loaded)
     - [Send a "Hello" transaction to the on-chain program](#send-a-hello-transaction-to-the-on-chain-program)
     - [Query the Solana account used in the Hello transaction](#query-the-solana-account-used-in-the-hello-transaction)
