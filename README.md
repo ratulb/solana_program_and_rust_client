@@ -299,7 +299,11 @@ The transaction contains a single very simple instruction that primarily carries
 the public key of the helloworld program account to call and the "greeter"
 account to which the client wishes to say "Hello" to.
 
-### Query the Solana account used in the "Hello" transaction
+### Query the counter account used in the "Increament" count transaction
+
+Each time we run our client program - it [increaments](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/client/src/client.rs#L291) the [count field inside the counter account](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/program/src/processor.rs#L24-L30) owned by our on-chain program.
+We load the counter account [here](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/client/src/client.rs#L329-L338) - deserialize the data field of the account into Counter struct and print out the count fields value.
+
 
 Each time the client says "Hello" to an account, the program increments a
 numerical count in the "greeter" account's data.  The client queries the
