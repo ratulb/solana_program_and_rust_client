@@ -3,6 +3,8 @@ use client::errors::Result;
 use std::process;
 
 fn main() -> Result<()> {
+    //Provides elaborate error messages - very useful during development
+    solana_logger::setup_with("solana=debug");
     let client = Client::default();
 
     if let Err(err) = client.setup_counter_account() {
