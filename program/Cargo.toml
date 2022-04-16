@@ -14,3 +14,4 @@ common = { path = "../common" }
 
 [lib]
 crate-type = ["cdylib", "lib"]
+no-entrypoint = []
