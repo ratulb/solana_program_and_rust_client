@@ -283,3 +283,11 @@ Executable and Linkable Format [ELF](https://en.wikipedia.org/wiki/Executable_an
 object [locally](https://github.com/ratulb/solana_counter_program/blob/819f849acc54eb6d481e65cd8dd1ee6df32ff52b/client/src/client.rs#L24). A program [keypair](https://github.com/ratulb/solana_counter_program/blob/8ca2bd8130d0f385d2720b2623abf7f0965e0566/client/src/client.rs#L26) is also generated - this generated keypair's pubkey becomes the default program_id.
 - [Deploy the program to the network](#deploy-the-on-chain-program-locally) - Solana CLI breaks up compiled program byte code into smaller chunks(due to restricted transaction size) and sends the chunks to an intermediate on-chain buffer account in a series of transactions. Once transmission is complete and verified, a final transaction instruction moves the intermediate buffered content to program's data account. This completes a new deployment or a program upgrade. As usual, transaction costs are deducted from payer's account.
 
+#### Quick references:
+The [link](https://github.com/ratulb/solana_counter_program/blob/dbbb8839b1e6940ab227065a654156b0484228cd/program/src/processor.rs#L15) to the counter program implemenation.
+
+The [link](https://github.com/ratulb/solana_counter_program/blob/dbbb8839b1e6940ab227065a654156b0484228cd/client/src/client.rs#L39) to client program.
+
+The [link](https://github.com/ratulb/solana_counter_program/blob/dbbb8839b1e6940ab227065a654156b0484228cd/client/src/config.rs#L12) to config reader.
+
+
