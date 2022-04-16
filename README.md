@@ -299,19 +299,17 @@ The transaction contains a single very simple instruction that primarily carries
 the public key of the helloworld program account to call and the "greeter"
 account to which the client wishes to say "Hello" to.
 
-### Query the counter account used in the "Increament" count transaction
+### Query the counter account reading
 
 Each time we run our client program - it [increaments](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/client/src/client.rs#L291) the [count field inside the counter account](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/program/src/processor.rs#L24-L30) owned by our on-chain program.
 We load the counter account [here](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/client/src/client.rs#L329-L338) - deserialize the data field of the account into Counter struct and print out the count fields value.
 
-
-Each time the client says "Hello" to an account, the program increments a
-numerical count in the "greeter" account's data.  The client queries the
-"greeter" account's data to discover the current number of times the account has
-been greeted by calling
-[`reportGreetings`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L226).
-
 ## More about the on-chain program
+
+To write an on-chain solana program - all that is necessary is to provide a function whose type signature matches [this](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L25-L26) 
+
+
+
 
 The [on-chain counter program](program/Cargo.toml) is a Rust program
 compiled to [Berkeley Packet Filter
