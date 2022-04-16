@@ -290,5 +290,5 @@ The [link](https://github.com/ratulb/solana_counter_program/blob/dbbb8839b1e6940
 
 The [link](https://github.com/ratulb/solana_counter_program/blob/dbbb8839b1e6940ab227065a654156b0484228cd/client/src/config.rs#L12) to config reader.
 
-> **End note**: If we start the validator in a clean state(`solana-test-validator --reset`) and run - `for _ in {0..99}; do cargo run; done` - from two terminals - must get counter value as 200. But we don't get! What gives?
+> **End note**: If we start the validator in a clean state(`solana-test-validator --reset`) and run - `**for _ in {0..99}; do cargo run; done**` - from two terminals - must get counter value as **200**. But we don't get! What gives?
 
