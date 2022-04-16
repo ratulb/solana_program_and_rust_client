@@ -36,10 +36,7 @@ The project comprises of:
     - [Send a "Hello" transaction to the on-chain program](#send-a-hello-transaction-to-the-on-chain-program)
     - [Query the Solana account used in the Hello transaction](#query-the-solana-account-used-in-the-hello-transaction)
   - [More about the on-chain program](#more-about-the-on-chain-program)
-    - [Programming on Solana](#programming-on-Solana)
-  - [Pointing to a public Solana cluster](#pointing-to-a-public-solana-cluster)
-  - [Expand your skills with advanced examples](#expand-your-skills-with-advanced-examples)
-
+    
 ## Quick Start
 
 The following dependencies are required to build and run this example:
