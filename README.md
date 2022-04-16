@@ -34,8 +34,8 @@ The project comprises of:
     - [Establish a connection to the cluster](#instantiates-the-client-that-wraps-up-an-underlying-rpcclient)
     - [Setup an account to store counter program state](#setup-an-account-to-store-counter-program-state)
     - [Check if the counter on-chain program has been deployed](#check-if-the-counter-on-chain-program-has-been-deployed)
-    - [Send a "Hello" transaction to the on-chain program](#send-a-hello-transaction-to-the-on-chain-program)
-    - [Query the Solana account used in the Hello transaction](#query-the-solana-account-used-in-the-hello-transaction)
+    - [Send a counter Increament transaction to the on-chain program](#send-a-counter-increament-transaction-to-the-on-chain-program)
+    - [Query the counter account](#query-the-counter-account)
   - [More about the on-chain program](#more-about-the-on-chain-program)
     
 ## Quick Start
@@ -252,7 +252,7 @@ We can query the program data account (underlined red in the image) and it will 
 
 To handle the case that a deployed on-chain program may have been closed - we look at the owner string references of loaders and futher [query](https://github.com/ratulb/solana_counter_program/blob/4f738e26ad191e41e0a978ebe4cd97b1787d9a9f/client/src/client.rs#L248-L270) for the program data account if the loader happens to be upgradable.
 
-### Send a counter "Increament" transaction to the on-chain program
+### Send a counter Increament transaction to the on-chain program
 
 [Here](https://github.com/ratulb/solana_counter_program/blob/6ec34295fd32d20afb92edb61d531021520acaac/client/src/client.rs#L291) we submit a transaction to our on-chain counter program to increament the counter value that is maintained in its owned account.
 
@@ -267,7 +267,7 @@ Its also mandatory that we pass along [accounts](https://github.com/solana-labs/
 
 > **Note**: This [line](https://github.com/ratulb/solana_counter_program/blob/87acd3c9b62b4dda04075979afe367cfd94bc8b3/client/src/client.rs#L310) is commented out. Its clones the instruction and packs it twice inside the message. What will happen if we uncomment this line and comment out the above line? Check that out!
 
-### Query the counter account reading
+### Query the counter account
 
 Each time we run our client program - it [increaments](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/client/src/client.rs#L291) the [count field inside the counter account](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/program/src/processor.rs#L24-L30) owned by our on-chain program.
 We load the counter account [here](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/client/src/client.rs#L329-L338) - deserialize the data field of the account into Counter struct and print out the count fields value.
