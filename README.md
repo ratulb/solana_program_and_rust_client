@@ -281,24 +281,6 @@ Its also mandatory that we pass along [accounts](https://github.com/solana-labs/
 
 > **Note**: This [line](https://github.com/ratulb/solana_counter_program/blob/87acd3c9b62b4dda04075979afe367cfd94bc8b3/client/src/client.rs#L310) is commented out. Its clones the instruction and packs it twice inside the message. What will happen if we uncomment this line and comment out the above line? Check that out!
 
-
-
-
-
-`CounterInstruction::Increament` is one of the payload parameters to our on-chain program. When we write an on-chain solana program - all we have to do is provide a function whose type signature matches [this](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L25-L26) and decorate our provided implementation with the [entrypoint macro](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L116). Our program gets compiled to [Berkeley Packet Filter
-(BPF)](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) bytecode and stored as an
-[Executable and Linkable Format (ELF) shared
-object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) file during the [build process](#build-the-on-chain-program) and called forth to handle submitted transactions once deployed on to the solana network. Our function enclosed within the `entrypoint` macro becomes the entrypoint for generated ELF(with `.so` extension in linux) file.
-
-
-
-The client then constructs and sends a "Hello" transaction to the program by
-calling
-[`sayHello`](https://github.com/solana-labs/example-helloworld/blob/ad52dc719cdc96d45ad8e308e8759abf4792b667/src/client/hello_world.ts#L209).
-The transaction contains a single very simple instruction that primarily carries
-the public key of the helloworld program account to call and the "greeter"
-account to which the client wishes to say "Hello" to.
-
 ### Query the counter account reading
 
 Each time we run our client program - it [increaments](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/client/src/client.rs#L291) the [count field inside the counter account](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/program/src/processor.rs#L24-L30) owned by our on-chain program.
@@ -311,68 +293,7 @@ To write an on-chain solana program - primarily we need to follow these steps:
 - Decorate the implementation with the [entrypoint macro](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L116). As we can see - net effect of invoking this macro is that our implemention function get embedded inside an external `c` function called `entrypoint`. Also, this external `c` function has got `no_mangle` annotation defined - which means compiler will keep its name as it is.
 - Define `no-entrypoint` feature - During on-chain program development we might depend on other crates for many useful APIs that they might provide. But they might have their own entrypoints as we do. So there is the issue of entrypoint collisions. Since there can not be multiple entrypoints at runtime - we need to take care to exclude or include entrypoint sections as needed during the compilation phase. Wich is why we define the entrypoint feature [here](https://github.com/ratulb/solana_counter_program/blob/fda4a0599934ba73195360448ad38938dd8d2ed2/program/Cargo.toml#L17). If, let say, someone is developing there own on-chain program and wants use some API from our crate - but wants to exclude our entrypoint - they would add a section `program = { version = "0.1.0", path = "../program",features = [ "no-entrypoint" ] }` to their Cargo.toml. Read more [here](https://docs.solana.com/developing/on-chain-programs/developing-rust#project-layout).
 - [Build the on-chain program](#build-the-on-chain-program)- During the build process the program is compiled to [Berkeley Packet Filter(BPF)](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) bytecode and stored as an
-[Executable and Linkable Format (ELF) shared
-object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) [locally](https://github.com/ratulb/solana_counter_program/blob/819f849acc54eb6d481e65cd8dd1ee6df32ff52b/client/src/client.rs#L24). A program keypair is also generated - this generated keypair's pubkey becomes the default program_id.
+Executable and Linkable Format [ELF](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) shared
+object [locally](https://github.com/ratulb/solana_counter_program/blob/819f849acc54eb6d481e65cd8dd1ee6df32ff52b/client/src/client.rs#L24). A program keypair is also generated - this generated keypair's pubkey becomes the default program_id.
 - [Deploy the program to the network](#deploy-the-on-chain-program-locally)
 
-
-all that is necessary is to provide a function whose type signature matches [this](https://github.com/solana-labs/solana/blob/f7d557d5ae5d2ebfb70c2eaefa7dd1e2068b748c/sdk/program/src/entrypoint.rs#L25-L26). 
-Here is our implementation of the counter on-chain program. We do very little here apart from calling 
-
-
-
-The [on-chain counter program](program/Cargo.toml) is a Rust program
-compiled to [Berkeley Packet Filter
-(BPF)](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) bytecode and stored as an
-[Executable and Linkable Format (ELF) shared
-object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format).
-
-The program is written using:
-- [Solana Rust SDK](https://github.com/solana-labs/solana/tree/master/sdk)
-
-### Programming on Solana
-
-To learn more about Solana programming model refer to the [Programming Model
-Overview](https://docs.solana.com/developing/programming-model/overview).
-
-To learn more about developing programs on Solana refer to the [On-Chain
-Programs Overview](https://docs.solana.com/developing/on-chain-programs/overview)
-
-## Pointing to a public Solana cluster
-
-Solana maintains three public clusters:
-- `devnet` - Development cluster with airdrops enabled
-- `testnet` - Tour De Sol test cluster without airdrops enabled
-- `mainnet-beta` -  Main cluster
-
-Use the Solana CLI to configure which cluster to connect to.
-
-To point to `devnet`:
-```bash
-solana config set --url devnet
-```
-
-To point back to the local cluster:
-```bash
-solana config set --url localhost
-```
-
-## Writing the client in Rust
-
-This example details writing the client code in typescript; however
-the Solana client program can be written in any language. For an
-example client written in Rust and an accompanying write up see [this
-repo](https://github.com/ezekiiel/simple-solana-program).
-
-## Expand your skills with advanced examples
-
-There is lots more to learn; The following examples demonstrate more advanced
-features like custom errors, advanced account handling, suggestions for data
-serialization, benchmarking, etc...
-
-- [Programming
-  Examples](https://github.com/solana-labs/solana-program-library/tree/master/examples)
-- [Token
-  Program](https://github.com/solana-labs/solana-program-library/tree/master/token)
-- [Token Swap
-  Program](https://github.com/solana-labs/solana-program-library/tree/master/token-swap)
