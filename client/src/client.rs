@@ -294,19 +294,20 @@ impl Client {
         let program_id = Self::get_program_id()
             .ok_or("Program pubkey not found! Program may not have been built")?;
         let counter_pubkey = Self::get_counter_pubkey();
-        
+
         let counter_instruction = CounterInstruction::Increament;
         let instruction = Instruction::new_with_borsh(
             program_id,
             &counter_instruction,
             vec![AccountMeta::new(counter_pubkey, false)],
         );
-        
+
         let blockhash = self
             .client
             .get_latest_blockhash()
             .map_err(|err| format!("Latest block hash {}", err))?;
         let message = Message::new_with_blockhash(&[instruction], Some(&payer_pubkey), &blockhash);
+        //let message = Message::new_with_blockhash(&[instruction.clone(), instruction.clone()], Some(&payer_pubkey), &blockhash);
         //Check lamports needed to execute this message
         let fee_for_message = self
             .client
