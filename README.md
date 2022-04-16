@@ -236,7 +236,7 @@ We fetch minimum required lamports balance for the counter account [here](https:
 
 After this - we proceed to construct the system instruction for creating the counter account in this [section](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L188-L195). We pass the lamports amount, space and owner(program id) along with other relevant fields.
 
-Next, we [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L198-L201) the latest blockhash from the solana network. This is a measure of how long ago the client has seen the network state and used by the network to accept/reject query and [transaction](https://docs.rs/solana-sdk/1.10.8/solana_sdk/transaction/struct.Transaction.html).
+Next, we [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L198-L201) the latest blockhash from the solana network. This is a measure of how long ago the client has seen the network state and used by the network to accept/reject [transaction](https://docs.rs/solana-sdk/1.10.8/solana_sdk/transaction/struct.Transaction.html).
 
 We [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L206-L209) network again to find out the required fee for the transaction message - this is the amount for executing transaction on the network passsing the message and the blockhash retrieved in the previous step. 
 
@@ -277,6 +277,7 @@ To handle the case that a deployed on-chain program may have been closed - we lo
 [Here](https://github.com/ratulb/solana_counter_program/blob/6ec34295fd32d20afb92edb61d531021520acaac/client/src/client.rs#L291) we submit a transaction to our on-chain counter program to increament the counter value that is maintained in its owned account.
 
 Usual steps like loading payer keypair, program id, querying for latest blockhash and fee for message etc happen in appropriate places - but one thing to note here is that we are packing an enum defined [here](https://github.com/ratulb/solana_counter_program/blob/421d7cfb80fab2a02b0982f03d2a47356e7eadfe/common/src/instruction.rs#L4) with the [instruction](https://github.com/ratulb/solana_counter_program/blob/c102c53ac088f9c26cdfa24169142ce4b632c509/client/src/client.rs#L301).
+To invoke a solana on-chain program - we send a Transaction, which contains a message and the encaptulates one or more [instructions](https://github.com/solana-labs/solana/blob/d71986cecf062e2bbbe291e018bf0a4c33e192a5/sdk/program/src/instruction.rs#L324) within it.
 
 
 
