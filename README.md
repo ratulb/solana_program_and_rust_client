@@ -32,7 +32,8 @@ The project comprises of:
   - [More about the client](#more-about-the-client)
     - [Main function](#main-function)
     - [Establish a connection to the cluster](#instantiates-the-client-that-wraps-up-an-underlying-rpcclient)
-    - [Load the helloworld on-chain program if not already loaded](#load-the-helloworld-on-chain-program-if-not-already-loaded)
+    - [Setup an account to store counter program state](#setup-an-account-to-store-counter-program-state)
+    - [Check if the counter on-chain program has been deployed](#check-if-the-counter-on-chain-program-has-been-deployed)
     - [Send a "Hello" transaction to the on-chain program](#send-a-hello-transaction-to-the-on-chain-program)
     - [Query the Solana account used in the Hello transaction](#query-the-solana-account-used-in-the-hello-transaction)
   - [More about the on-chain program](#more-about-the-on-chain-program)
@@ -200,7 +201,7 @@ The `json_rpc_url` entry in the `config.yaml(/.config/solana/cli/config.yml)` fi
 solana config set --url localhost[devnet, testnet etc]
 ```
 
-#### Setup an account to store counter program's state
+#### Setup an account to store counter program state
 
 Solana on-chain programs are stateless and immutable(which is different from upgradable - we can keep modifying and deploying a program again and again so long as we don't supply the `--final` flag to `solana program deploy program.so` or don't use `solana deploy program.so` - which sets up 'BPFLoader2111111111111111111111111111111111' as program owner instead of `BPFLoaderUpgradeab1e11111111111111111111111` and does not allow us to upgrade the program further unless we specify different program address). Also, looking at the program [crate_type](https://github.com/ratulb/solana_counter_program/blob/0684cbf58aa497de85a6625caf773ac985a808dd/program/Cargo.toml#L16), we see that `crate-type` is "cdylib", "lib". We can ommit the "lib" type that would work just fine. "cdylib" produces a .so file in linux and .dll file in windows. These are shared libraries - they do not maintain state across invocations! Where then we store state in solana? In accounts. If a program in solana wants to persist state, it would have to make use of accounts that it owns.
 
