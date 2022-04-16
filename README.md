@@ -89,7 +89,7 @@ On-chain deployed program's logs can be viewed by launcing a separate terminal a
 ```bash
 solana logs
 ```
-> **None**: For logging messages inside the on-chain program, we should use the `msg!` [macro](https://docs.solana.com/developing/on-chain-programs/developing-rust#logging).
+> **Note**: For logging messages inside the on-chain program, we should use the `msg!` [macro](https://docs.solana.com/developing/on-chain-programs/developing-rust#logging).
 
 ### Build the on-chain program
 
@@ -130,7 +130,7 @@ Counter value 1
 #### Not seeing the expected output?
 
 - Ensure you've [started the local cluster](#start-local-solana-cluster),
-  [built the on-chain program](#build-the-on-chain-program) and [deployed the program to the cluster](#deploy-the-on-chain-program).
+  [build the on-chain program](#build-the-on-chain-program) and [deployed the program to the cluster](#deploy-the-on-chain-program-locally).
   
   
 
