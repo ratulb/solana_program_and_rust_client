@@ -181,7 +181,7 @@ The client is a rust cli [program](https://github.com/ratulb/solana_counter_prog
 
 #### Main function
 
-The [main function](https://github.com/ratulb/solana_counter_program/blob/27d5aa6aa4c7ec14fe049837e8beff4bb7548f3e/client/src/main.rs#L5) does following five things:
+The [main function](https://github.com/ratulb/solana_counter_program/blob/97d463aecc7d21b138b95cd53bdd3e2d951ba663/client/src/main.rs#L5) does following five things:
 
 
 #### Instantiates the client that wraps up an underlying RpcClient
