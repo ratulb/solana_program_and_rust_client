@@ -13,7 +13,7 @@ no-entrypoint = []
 
 [dependencies]
 borsh = "0.9.3"
-solana-program = "1.10.7"
+solana-program = "1.10.8"
 common = { path = "../common" }
 
 [lib]
