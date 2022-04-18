@@ -213,7 +213,7 @@ We proceed to setup the account if it does not already exist. We calculate the m
 
 We fetch minimum required lamports balance for the counter account [here](https://github.com/ratulb/solana_counter_program/blob/97d463aecc7d21b138b95cd53bdd3e2d951ba663/client/src/client.rs#L187-L193). This amount would be deducted from the payer's account when we execute the create account transaction later.
 
-After this - we proceed to construct the system instruction for creating the counter account in this [section](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L188-L195). We pass the lamports amount, space and owner(program id) along with other relevant fields.
+After this - we proceed to construct the system instruction for creating the counter account in this [section](https://github.com/ratulb/solana_counter_program/blob/97d463aecc7d21b138b95cd53bdd3e2d951ba663/client/src/client.rs#L195-L202). We pass the lamports amount, space and owner(program id) along with other relevant fields.
 
 Next, we [query](https://github.com/ratulb/solana_counter_program/blob/968744232698898370d17dfc606b6cc15d4d8b5f/client/src/client.rs#L198-L201) the latest blockhash from the solana network. This is a measure of how long ago the client has seen the network state and used by the network to accept/reject [transaction](https://docs.rs/solana-sdk/1.10.8/solana_sdk/transaction/struct.Transaction.html).
 
