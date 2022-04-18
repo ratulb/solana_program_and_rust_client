@@ -6,6 +6,8 @@ some of the dependencies on a Mac or Linux workstation.
 You can install Rust using the 'rustup' tool. Rustup will install
 the latest version of Rust, Cargo, and the other binaries used in Solana.
 
+> **Note**: If this the first time that rust is being installed on linux - you might need to install build-essential. To install build-essential, run - `sudo apt install build-essential -y`
+
 Follow the instructions at [Installing
 Rust](https://www.rust-lang.org/tools/install).
 
