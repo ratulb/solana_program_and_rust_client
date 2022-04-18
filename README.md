@@ -260,8 +260,8 @@ Its also mandatory that we pass along [accounts](https://github.com/solana-labs/
 
 ### Query the counter account
 
-Each time we run our client program - it [increaments](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/client/src/client.rs#L291) the [count field inside the counter account](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/program/src/processor.rs#L24-L30) owned by our on-chain program.
-We load the counter account [here](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/client/src/client.rs#L329-L338) - deserialize the data field of the account into Counter struct and print out the count fields value.
+Each time we run our client program - it [increaments](https://github.com/ratulb/solana_counter_program/blob/97d463aecc7d21b138b95cd53bdd3e2d951ba663/client/src/client.rs#L358) the [count field inside the counter account](https://github.com/ratulb/solana_counter_program/blob/2768076d9c576230a320327c48665f270dbbb4a2/program/src/processor.rs#L24-L30) owned by our on-chain program.
+We load the counter account [here](https://github.com/ratulb/solana_counter_program/blob/97d463aecc7d21b138b95cd53bdd3e2d951ba663/client/src/client.rs#L362-L377) - deserialize the data field of the account into Counter struct and print out the count fields value.
 
 ## More about the on-chain program
 
