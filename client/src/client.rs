@@ -4,6 +4,7 @@ use borsh::BorshDeserialize;
 use common::Counter;
 use common::CounterInstruction;
 use solana_client::rpc_client::RpcClient;
+use solana_sdk::account::Account;
 use solana_sdk::account_utils::StateMut;
 use solana_sdk::bpf_loader_upgradeable::UpgradeableLoaderState;
 use solana_sdk::commitment_config::CommitmentConfig;
@@ -326,17 +327,27 @@ impl Client {
         Ok(())
     }
 
+    //Get the increamented counter value 
     pub fn get_counter_reading(&self) -> Result<()> {
-        let counter_pubkey = Self::get_counter_pubkey();
-        let counter_account = self
+        let program_id = Self::get_program_id()
+            .ok_or("Program pubkey not found! Program may not have been built")?;
+        //Retrieve all accounts owned by our program
+        let counter_accounts = self
             .client
-            .get_account(&counter_pubkey)
-            .map_err(|err| format!("Error while retrieving counter account {}", err))?;
-        let data = counter_account.data;
+            .get_program_accounts(&program_id)
+            .map_err(|err| format!("Program counter account may not have been setup {}", err))?;
+        //We have only one account that is owned by our program
+        let counter_account: &Account = match counter_accounts.first() {
+            //We are ignoring the first element of the returned tuple
+            Some((_pubkey, account)) => account,
+            None => return Err(format!("Counter account not found")),
+        };
+        //Get the data field out of the account
+        let data = &counter_account.data;
+        //Deserialize it back to a Counter
         let counter = Counter::try_from_slice(&data)
             .map_err(|err| format!("Error deserializing bytes to counter {}", err))?;
         println!("Counter value {}", counter.count);
-
         Ok(())
     }
 }
