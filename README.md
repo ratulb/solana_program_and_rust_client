@@ -36,7 +36,7 @@ The project comprises of:
 The following dependencies are required to build and run this example:
 
 - Install Rust v1.60.0 or later from https://rustup.rs/
-- Install Solana v1.10.5 or later from
+- Install Solana v1.10.8 or later from
   https://docs.solana.com/cli/install-solana-cli-tools
 
 If this is your first time using Rust, these [Installation
