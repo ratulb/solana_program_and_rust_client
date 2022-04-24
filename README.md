@@ -1,6 +1,6 @@
 # Rust counter program and client on solana
 
-This project demonstrates how to use solana rust APIs to write a counter program and client in rust.
+This project demonstrates how to use solana rust APIs to write solana on-chain program(aka contract) and off-chain client program in rust via a simple counter example. 
 
 The project comprises of:
 
