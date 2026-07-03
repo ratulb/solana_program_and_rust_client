@@ -1,0 +1,12 @@
+[book]
+authors = ["Ratul Buragohain"]
+language = "en"
+title = "Solana Counter Program & Rust Client"
+description = "A Solana on-chain counter program and off-chain Rust client"
+
+[build]
+build-dir = "docs"
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
