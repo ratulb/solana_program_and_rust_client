@@ -1,0 +1,85 @@
+:root {
+  --bg-gradient: linear-gradient(120deg, #0650b1, rgb(0, 128, 0));
+}
+html {
+  background: var(--bg-gradient) !important;
+  background-attachment: fixed !important;
+}
+.page-wrapper {
+  background: transparent !important;
+}
+.sidebar {
+  background: transparent !important;
+}
+#menu-bar {
+  background: transparent !important;
+  border-block-end-color: transparent !important;
+  box-shadow: none !important;
+}
+.content {
+  background-color: var(--bg);
+}
+.menu-title {
+  color: #e6edf3 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+.sidebar a,
+.sidebar .chapter li a {
+  color: #d4d4d8 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+.sidebar .chapter li a.active {
+  color: #93c5fd !important;
+}
+.menu-bar,
+.menu-bar:visited,
+.menu-bar .icon-button,
+.menu-bar a i {
+  color: #d4d4d8 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+.menu-bar i:hover,
+.menu-bar .icon-button:hover {
+  color: #ffffff !important;
+}
+.nav-chapters,
+.nav-chapters:visited,
+.mobile-nav-chapters,
+.mobile-nav-chapters:visited {
+  color: #d4d4d8 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+.nav-chapters:hover {
+  background: transparent !important;
+  color: #ffffff !important;
+}
+.mobile-nav-chapters {
+  background: rgba(0,0,0,0.3) !important;
+}
+.theme-popup {
+  background: rgba(0,0,0,0.85) !important;
+  border-color: rgba(255,255,255,0.15) !important;
+}
+.theme-popup .theme:hover {
+  background: rgba(255,255,255,0.1) !important;
+}
+.sidebar .sidebar-resize-handle .sidebar-resize-indicator {
+  background: rgba(255,255,255,0.3) !important;
+}
+.sidebar::-webkit-scrollbar {
+  background: transparent !important;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2) !important;
+}
+#searchbar {
+  background: rgba(0,0,0,0.4) !important;
+  border-color: rgba(255,255,255,0.15) !important;
+  color: #e6edf3 !important;
+}
+.searchresults-header {
+  color: #d4d4d8 !important;
+}
+ul#searchresults li.focus {
+  background-color: rgba(255,255,255,0.1) !important;
+}

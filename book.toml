@@ -8,5 +8,7 @@ description = "A Solana on-chain counter program and off-chain Rust client"
 build-dir = "docs"
 
 [output.html]
+git-repository-url = "https://github.com/ratulb/solana_program_and_rust_client"
+additional-css = ["theme/custom.css"]
 default-theme = "navy"
 preferred-dark-theme = "navy"
