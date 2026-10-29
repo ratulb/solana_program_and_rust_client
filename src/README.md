@@ -26,7 +26,7 @@ The project comprises:
 
 ## Source
 
-The full source code is available at [github.com/ratulb/solana_program_and_rust_client](https://github.com/ratulb/solana_program_and_rust_client).
+The full source code is available [here](https://github.com/ratulb/solana_program_and_rust_client).
 
 ## About the Author
 
